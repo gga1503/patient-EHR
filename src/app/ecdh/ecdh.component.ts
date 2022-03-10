@@ -25,14 +25,17 @@ export class EcdhComponent implements OnInit {
       '-----END PUBLIC KEY-----'
   }
 
-  patient: any = null;
-  doctor: any = null;
+  patient: any = { publicKey: null, privateKey: null, secretKey: null };
+  doctor: any = { publicKey: null, privateKey: null, secretKey: null };
   myAngularxQrCode: any;
+  myAngularxQrCodeA: string;
 
   constructor() {
+    this.myAngularxQrCodeA = 'Blabla';
   }
 
   async ngOnInit(): Promise<void> {
+
     this.patient = {
       publicKey: await this.importKey(this.alice.publicKey),
       privateKey: await this.importKey(this.alice.privateKey)
@@ -47,6 +50,8 @@ export class EcdhComponent implements OnInit {
     this.doctor.secretKey = await this.generateSecretKey(this.doctor.privateKey, this.patient.publicKey)
 
     this.myAngularxQrCode = this.patient.secretKey
+
+    // console.log(this.myAngularxQrCode)
 
     console.log('Patient:', this.patient)
     console.log('Doctor:', this.doctor)

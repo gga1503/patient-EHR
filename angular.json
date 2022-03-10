@@ -78,7 +78,11 @@
               "browserTarget": "patient-EHR:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "sslKey": "./ssl.key",
+            "sslCert": "./ssl.cert"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
