@@ -20,7 +20,7 @@ export class KeyGenerationComponent implements OnInit {
     return await window.crypto.subtle.generateKey(
       {
         name: "ECDH",
-        namedCurve: "P-384"
+        namedCurve: "P-256"
       },
       true,
       ["deriveKey", "deriveBits"]

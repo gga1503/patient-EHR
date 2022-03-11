@@ -9,21 +9,41 @@ export class EcdhComponent implements OnInit {
 
   alice = {
     privateKey: '-----BEGIN PRIVATE KEY-----' +
-      'MIG2AgEAMBAGByqGSM49AgEGBSuBBAAiBIGeMIGbAgEBBDDz2+Ebn5Q4OV53xe6G+PBAxOywXAOdgNfo9DaBzsuDECjK2SzP0RMxx3IH65+dviyhZANiAAQs8QFwlPTSInB/4wD4svsKDqW19B5Jl/R/ZHU3e2gzpZ2xdH2cbP9adHIZxMi4Vfb4KBDu8KMM2LqsxPyhtEri64iJev+hwOEp0NlTAOITePv/DBnQhguREAyH/i23cC4=' +
+      'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgUbuXQG2YFrZtJtucV5L5wA4dbGEuU30mruYn3Wsyf2yhRANCAAS6aar/PnqCyy99owNITXdF7Jdvhpj+z6ltRh93M1xhPDs9wj0Wp7QQCYjU1sFkh7eLhEjksnV+P9NLIDoGn67q' +
       '-----END PRIVATE KEY-----',
     publicKey: '-----BEGIN PUBLIC KEY-----' +
-      'MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAELPEBcJT00iJwf+MA+LL7Cg6ltfQeSZf0f2R1N3toM6WdsXR9nGz/WnRyGcTIuFX2+CgQ7vCjDNi6rMT8obRK4uuIiXr/ocDhKdDZUwDiE3j7/wwZ0IYLkRAMh/4tt3Au' +
+      'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEummq/z56gssvfaMDSE13ReyXb4aY/s+pbUYfdzNcYTw7PcI9Fqe0EAmI1NbBZIe3i4RI5LJ1fj/TSyA6Bp+u6g==' +
       '-----END PUBLIC KEY-----'
   }
 
   bob = {
     privateKey: '-----BEGIN PRIVATE KEY-----' +
-      'MIG2AgEAMBAGByqGSM49AgEGBSuBBAAiBIGeMIGbAgEBBDBwiloXtpfJ0MVQH09jzFqgH0ddKmbeKF9m5Wn9sCOb5jS4z2Wv2KmuyV7edi5HuSShZANiAAQCaS0a2BQDJV0FXFA28k+qIxaMpuilMChvPhY8tiloWbSI1A3Yzt5lfaDdg8ZneyV1G2wVL7y0uW1BtPzxzDT6WHaxkdf9UTWYJV18gSLa+GDA+jbBDTodJ43DA37C2qM=' +
+      'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+G9xJywi68JTEXvPw9UkQ3TyEgFxiiGe19/sppCTE8mhRANCAAReEEr0N/vsRz24bnrg4XuhzItNcdSP44dVvfB/6RufYlGw9I/5oxNM4Fn88IzOF47jeBirgBxJyCpwcz8CT4k+' +
       '-----END PRIVATE KEY-----',
     publicKey: '-----BEGIN PUBLIC KEY-----' +
-      'MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEAmktGtgUAyVdBVxQNvJPqiMWjKbopTAobz4WPLYpaFm0iNQN2M7eZX2g3YPGZ3sldRtsFS+8tLltQbT88cw0+lh2sZHX/VE1mCVdfIEi2vhgwPo2wQ06HSeNwwN+wtqj' +
+      'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEXhBK9Df77Ec9uG564OF7ocyLTXHUj+OHVb3wf+kbn2JRsPSP+aMTTOBZ/PCMzheO43gYq4AcScgqcHM/Ak+JPg==' +
       '-----END PUBLIC KEY-----'
   }
+
+  // Keys from crypto node.js (curve type: prime256v1, the equal of NIST P-256)
+  charlie = {
+    privateKey: '-----BEGIN PRIVATE KEY-----' +
+      'BMcW0gD+1pV6INEIzNUULMMAvLUiMDEi2iay3+SGKNEjf/2/+OdbjMRN38I0rZqUbyNd2CJNr2/y4R2TsEsLE2M=' +
+      '-----END PRIVATE KEY-----',
+    publicKey: '-----BEGIN PUBLIC KEY-----' +
+      '/YktVnv6JFN6P/Tf0Gzre4gRpDUjzsHAkr+741d8Xk8=' +
+      '-----END PUBLIC KEY-----'
+  }
+
+  david = {
+    privateKey: '-----BEGIN PRIVATE KEY-----' +
+      'BEFVvsjHI0FrOb3ZIlMnxxgCRHrZXmjyN08EANjxUiP6qrFVacco0XYT/KeGVO8sGS3ap3bAiyDrOUr6nNN8Asg=' +
+      '-----END PRIVATE KEY-----',
+    publicKey: '-----BEGIN PUBLIC KEY-----' +
+      'J/1APBlv0skl/rFOaxix10SaMAxCCpCnF070OQ980v4=' +
+      '-----END PUBLIC KEY-----'
+  }
+
 
   patient: any = { publicKey: null, privateKey: null, secretKey: null };
   doctor: any = { publicKey: null, privateKey: null, secretKey: null };
@@ -78,7 +98,7 @@ export class EcdhComponent implements OnInit {
       return await window.crypto.subtle.importKey(
         "spki",
         key,
-        { name: "ECDH", namedCurve: "P-384" },
+        { name: "ECDH", namedCurve: "P-256" },
         true,
         []
       );
@@ -91,7 +111,7 @@ export class EcdhComponent implements OnInit {
       key,
       {
         name: "ECDH",
-        namedCurve: "P-384",
+        namedCurve: "P-256",
       },
       true,
       ["deriveKey", "deriveBits"]
@@ -105,7 +125,7 @@ export class EcdhComponent implements OnInit {
         public: publicKey
       },
       privateKey,
-      384
+      256
     )
     return this.arrayBufferToBase64(sharedSecret);
   }
