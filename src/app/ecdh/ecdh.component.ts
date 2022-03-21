@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-ecdh',
@@ -45,8 +46,35 @@ export class EcdhComponent implements OnInit {
   }
 
 
-  patient: any = { publicKey: null, privateKey: null, secretKey: null };
-  doctor: any = { publicKey: null, privateKey: null, secretKey: null };
+  patient: any = {
+    publicKey: null,
+    privateKey: null,
+    secretKey: null,
+    disease: "Covid-19",
+    diagnose: "Need to drink Covid-19 drugs"
+  };
+
+  records: any = [{
+    disease: "Covid-19",
+    diagnoses: [{
+      date: "2022/03/21",
+      detail: "Drink Covid-19 drugs 2"
+    }, {
+      date: "2022/03/15",
+      detail: "Drink Covid-19 drugs 1"
+    }]
+  }, {
+    disease: "Heart Attack",
+    diagnoses: [{
+      date: "2021/04/10",
+      detail: "Ring 2 installment"
+    }, {
+      date: "2021/03/22",
+      detail: "Ring 1 installment"
+    }]
+  }]
+
+  doctor: any = {publicKey: null, privateKey: null, secretKey: null};
   myAngularxQrCode: any;
   myAngularxQrCodeA: string;
 
@@ -55,7 +83,6 @@ export class EcdhComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-
     this.patient = {
       publicKey: await this.importKey(this.alice.publicKey),
       privateKey: await this.importKey(this.alice.privateKey)
@@ -75,7 +102,15 @@ export class EcdhComponent implements OnInit {
 
     console.log('Patient:', this.patient)
     console.log('Doctor:', this.doctor)
-    // console.log(typeof (this.patient.secretKey));
+
+    // Encryption with AES
+    const cipher = CryptoJS.AES.encrypt(this.records[0].disease, this.patient.secretKey)
+    const decrypted = CryptoJS.AES.decrypt(cipher, this.patient.secretKey)
+    const decipher = CryptoJS.enc.Utf8.stringify(decrypted);
+
+    console.log("Data:", this.records[0].disease)
+    console.log("Cipher:", cipher.toString())
+    console.log("Decipher:", decipher)
   }
 
   str2ab(str: any) {
@@ -98,7 +133,7 @@ export class EcdhComponent implements OnInit {
       return await window.crypto.subtle.importKey(
         "spki",
         key,
-        { name: "ECDH", namedCurve: "P-256" },
+        {name: "ECDH", namedCurve: "P-256"},
         true,
         []
       );
@@ -116,6 +151,30 @@ export class EcdhComponent implements OnInit {
       true,
       ["deriveKey", "deriveBits"]
     );
+  }
+
+  async encryptRSA(data: any, public_key: any) {
+    const enc = new TextEncoder()
+    const arrayBufferData = enc.encode(data)
+
+    return await window.crypto.subtle.encrypt(
+      {name: "RSA-OAEP"},
+      public_key,
+      arrayBufferData
+    )
+  }
+
+  async decryptRSA(data: any, private_key: any) {
+    return await window.crypto.subtle.decrypt(
+      {name: "RSA-OAEP"},
+      private_key,
+      data
+    )
+  }
+
+  async encryptECDH(data: any, key: any){
+    const enc = new TextEncoder()
+    const arrayBufferData = enc.encode(data)
   }
 
   async generateSecretKey(privateKey: any, publicKey: any) {
@@ -139,5 +198,4 @@ export class EcdhComponent implements OnInit {
     }
     return window.btoa(binary);
   }
-
 }

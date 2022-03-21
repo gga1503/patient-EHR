@@ -10,13 +10,14 @@ export class KeyGenerationComponent implements OnInit {
   constructor() { }
 
   async ngOnInit(): Promise<void> {
-    const keyPair = await this.keyGeneration()
+    const keyPair = await this.RsaKeyGeneration()
+    // const keyPair = await this.EcdhKeyGeneration()
 
     console.log(await this.exportPublicKey(keyPair.publicKey))
     console.log(await this.exportPrivateKey(keyPair.privateKey))
   }
 
-  async keyGeneration() {
+  async EcdhKeyGeneration() {
     return await window.crypto.subtle.generateKey(
       {
         name: "ECDH",
@@ -25,6 +26,19 @@ export class KeyGenerationComponent implements OnInit {
       true,
       ["deriveKey", "deriveBits"]
     )
+  }
+
+  async RsaKeyGeneration(){
+    return await window.crypto.subtle.generateKey(
+      {
+        name: "RSA-OAEP",
+        modulusLength: 4096,
+        publicExponent: new Uint8Array([1, 0, 1]),
+        hash: "SHA-256"
+      },
+      true,
+      ["encrypt", "decrypt"]
+    );
   }
 
   async exportPublicKey(key: any) {
