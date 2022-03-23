@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import {CryptoService} from '../services/crypto/crypto.service';
 
 @Component({
   selector: 'app-ecdh',
@@ -78,124 +78,32 @@ export class EcdhComponent implements OnInit {
   myAngularxQrCode: any;
   myAngularxQrCodeA: string;
 
-  constructor() {
+  constructor(private Crypto: CryptoService) {
     this.myAngularxQrCodeA = 'Blabla';
   }
 
   async ngOnInit(): Promise<void> {
-    this.patient = {
-      publicKey: await this.importKey(this.alice.publicKey),
-      privateKey: await this.importKey(this.alice.privateKey)
-    }
+    console.log(await this.Crypto.ECDH.generateKeys())
+    this.patient.publicKey = await this.Crypto.ECDH.importPublicKey(this.alice.publicKey, "P-256")
+    this.patient.privateKey = await this.Crypto.ECDH.importPrivateKey(this.alice.privateKey, "P-256")
 
-    this.doctor = {
-      publicKey: await this.importKey(this.bob.publicKey),
-      privateKey: await this.importKey(this.bob.privateKey)
-    }
+    this.doctor.publicKey = await this.Crypto.ECDH.importPublicKey(this.bob.publicKey, "P-256")
+    this.doctor.privateKey = await this.Crypto.ECDH.importPrivateKey(this.bob.privateKey, "P-256")
 
-    this.patient.secretKey = await this.generateSecretKey(this.patient.privateKey, this.doctor.publicKey)
-    this.doctor.secretKey = await this.generateSecretKey(this.doctor.privateKey, this.patient.publicKey)
-
-    this.myAngularxQrCode = this.patient.secretKey
-
-    // console.log(this.myAngularxQrCode)
+    this.patient.secretKey = await this.Crypto.ECDH.computeSecret(this.patient.privateKey, this.doctor.publicKey)
+    this.doctor.secretKey = await this.Crypto.ECDH.computeSecret(this.doctor.privateKey, this.patient.publicKey)
 
     console.log('Patient:', this.patient)
     console.log('Doctor:', this.doctor)
 
+    this.myAngularxQrCode = this.patient.secretKey
+
     // Encryption with AES
-    const cipher = CryptoJS.AES.encrypt(this.records[0].disease, this.patient.secretKey)
-    const decrypted = CryptoJS.AES.decrypt(cipher, this.patient.secretKey)
-    const decipher = CryptoJS.enc.Utf8.stringify(decrypted);
+    const cipher = this.Crypto.AES.encrypt(this.records[0].disease, this.patient.secretKey)
+    const decipher = this.Crypto.AES.decrypt(cipher, this.patient.secretKey)
 
     console.log("Data:", this.records[0].disease)
     console.log("Cipher:", cipher.toString())
     console.log("Decipher:", decipher)
-  }
-
-  str2ab(str: any) {
-    const buf = new ArrayBuffer(str.length);
-    const bufView = new Uint8Array(buf);
-    for (let i = 0, strLen = str.length; i < strLen; i++) {
-      bufView[i] = str.charCodeAt(i);
-    }
-    return buf;
-  }
-
-  b64_to_ab(base64_string: any) {
-    return Uint8Array.from(atob(base64_string), c => c.charCodeAt(0));
-  }
-
-  async importKey(pem: any) {
-    if (pem.includes('PUBLIC')) {
-      const key = this.b64_to_ab(pem.replace('-----BEGIN PUBLIC KEY-----', '').replace('-----END PUBLIC KEY-----', ''))
-
-      return await window.crypto.subtle.importKey(
-        "spki",
-        key,
-        {name: "ECDH", namedCurve: "P-256"},
-        true,
-        []
-      );
-    }
-
-    const key = this.b64_to_ab(pem.replace('-----BEGIN PRIVATE KEY-----', '').replace('-----END PRIVATE KEY-----', ''))
-
-    return window.crypto.subtle.importKey(
-      "pkcs8",
-      key,
-      {
-        name: "ECDH",
-        namedCurve: "P-256",
-      },
-      true,
-      ["deriveKey", "deriveBits"]
-    );
-  }
-
-  async encryptRSA(data: any, public_key: any) {
-    const enc = new TextEncoder()
-    const arrayBufferData = enc.encode(data)
-
-    return await window.crypto.subtle.encrypt(
-      {name: "RSA-OAEP"},
-      public_key,
-      arrayBufferData
-    )
-  }
-
-  async decryptRSA(data: any, private_key: any) {
-    return await window.crypto.subtle.decrypt(
-      {name: "RSA-OAEP"},
-      private_key,
-      data
-    )
-  }
-
-  async encryptECDH(data: any, key: any){
-    const enc = new TextEncoder()
-    const arrayBufferData = enc.encode(data)
-  }
-
-  async generateSecretKey(privateKey: any, publicKey: any) {
-    const sharedSecret = await window.crypto.subtle.deriveBits(
-      {
-        name: "ECDH",
-        public: publicKey
-      },
-      privateKey,
-      256
-    )
-    return this.arrayBufferToBase64(sharedSecret);
-  }
-
-  arrayBufferToBase64(buffer: any) {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
   }
 }
