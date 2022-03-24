@@ -1,0 +1,11 @@
+<h1>Patient's Secret Key Barcode</h1>
+
+<div>Di sini nanti tampilin QR code yg isinya:
+  <br> 1. ID patient
+  <br> 2. Public key ECDH patient
+  <br> <b>Notes</b>: 2 data di atas nanti diconcat string (google caranya nanti) supaya jadi 1 string yg dipisah pake coma
+  <br> Contoh: id_patient,ECDH_pub_key
+</div>
+<!-- <qrcode [qrdata]="patient" [width]="500" [errorCorrectionLevel]="'M'" elementType="img"></qrcode> -->
+
+<qrcode [qrdata]="patient.secretKey" [width]="256" [errorCorrectionLevel]="'M'" elementType="img"></qrcode>

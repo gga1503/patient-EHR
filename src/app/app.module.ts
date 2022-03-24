@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EcdhComponent } from './ecdh/ecdh.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EcdhComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

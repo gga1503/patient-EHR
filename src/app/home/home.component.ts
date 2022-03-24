@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CryptoService} from '../services/crypto/crypto.service';
 
 @Component({
-  selector: 'app-ecdh',
-  templateUrl: './ecdh.component.html',
-  styleUrls: ['./ecdh.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class EcdhComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   alice = {
     privateKey: '-----BEGIN PRIVATE KEY-----' +
@@ -83,6 +83,7 @@ export class EcdhComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    // Ini aku cuma testing operasi ECDH key exchange & encryption. nanti ini diapus kalo udah ga kepake
     console.log(await this.Crypto.ECDH.generateKeys())
     this.patient.publicKey = await this.Crypto.ECDH.importPublicKey(this.alice.publicKey, "P-256")
     this.patient.privateKey = await this.Crypto.ECDH.importPrivateKey(this.alice.privateKey, "P-256")
