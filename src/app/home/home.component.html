@@ -1,11 +1,26 @@
-<h1>Patient's Secret Key Barcode</h1>
-
-<div>Di sini nanti tampilin QR code yg isinya:
-  <br> 1. ID patient
-  <br> 2. Public key ECDH patient
-  <br> <b>Notes</b>: 2 data di atas nanti diconcat string (google caranya nanti) supaya jadi 1 string yg dipisah pake coma
-  <br> Contoh: id_patient,ECDH_pub_key
+<div class="title">
+  <h1 class="mat-display-1">Welcome</h1>
+  <h3>How's your day?</h3>
 </div>
-<!-- <qrcode [qrdata]="patient" [width]="500" [errorCorrectionLevel]="'M'" elementType="img"></qrcode> -->
 
-<qrcode [qrdata]="patient.secretKey" [width]="256" [errorCorrectionLevel]="'M'" elementType="img"></qrcode>
+<app-card-show-qr></app-card-show-qr>
+
+<div class="searchDisease">
+  <h2>Disease</h2>
+  <app-search-bar></app-search-bar>
+</div>
+
+<app-card-diseases></app-card-diseases>
+<app-card-diseases></app-card-diseases>
+
+
+<!--<div>Di sini nanti tampilin QR code yg isinya:-->
+<!--  <br> 1. ID patient-->
+<!--  <br> 2. Public key ECDH patient-->
+<!--  <br> <b>Notes</b>: 2 data di atas nanti diconcat string (google caranya nanti) supaya jadi 1 string yg dipisah pake coma-->
+<!--  <br> Contoh: id_patient,ECDH_pub_key-->
+<!--</div>-->
+<!--&lt;!&ndash; <qrcode [qrdata]="patient" [width]="500" [errorCorrectionLevel]="'M'" elementType="img"></qrcode> &ndash;&gt;-->
+
+<!--<qrcode [qrdata]="patient.secretKey" [width]="256" [errorCorrectionLevel]="'M'" elementType="img"></qrcode>-->
+

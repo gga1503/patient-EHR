@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CryptoService} from '../services/crypto/crypto.service';
+import {SearchBarComponent} from "../search-bar/search-bar.component";
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,7 @@ import {CryptoService} from '../services/crypto/crypto.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  placeHolders = "Search Disease";
 
   alice = {
     privateKey: '-----BEGIN PRIVATE KEY-----' +
