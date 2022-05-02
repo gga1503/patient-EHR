@@ -1,0 +1,35 @@
+.cards-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.card {
+  margin-bottom: 1.5rem;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 0.8rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 1px 14px 0px;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
+  text-align: center;
+}
+
+.card_image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  object-fit: fill;
+  margin-bottom: 3px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+  color: #013b84;
+}
+

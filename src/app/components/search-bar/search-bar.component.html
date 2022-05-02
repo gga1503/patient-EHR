@@ -1,0 +1,14 @@
+<div class="search-container">
+  <form #searchBar="ngForm" (ngSubmit)="onSubmit(searchBar)" class="search-form">
+    <input
+      [placeholder]="placeHolders"
+      class="search-input"
+      name="searchBar"
+      ngModel
+      type="text"
+    />
+  </form>
+</div>
+
+
+
