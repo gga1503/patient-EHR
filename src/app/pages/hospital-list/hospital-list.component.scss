@@ -1,0 +1,33 @@
+.box {
+  height: 100vh;
+}
+
+.content {
+  padding: 2.3rem 1.3rem 2rem 1.3rem;
+}
+
+header {
+  padding-top: 1.5rem;
+  text-align: center;
+
+  h2 {
+    font-family: "Helvetica Neue";
+    font-size: 14pt;
+    font-weight: 500;
+  }
+}
+
+h1 {
+  font-family: "Avenir";
+  font-size: 20pt;
+  font-weight: 850;
+}
+
+.rectangle {
+  height: 280px;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(96, 164, 245, 0.5);
+}
+
