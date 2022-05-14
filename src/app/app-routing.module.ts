@@ -9,6 +9,8 @@ import {CardDiseasesDetailComponent} from "./components/card-diseases-detail/car
 import {HospitalListComponent} from "./pages/hospital-list/hospital-list.component";
 import {RecordsAllHospitalsComponent} from "./pages/records-all-hospitals/records-all-hospitals.component";
 import {RecordsOneHospitalComponent} from "./pages/records-one-hospital/records-one-hospital.component";
+import {LoginComponent} from "./pages/login/login.component";
+import {SignUpComponent} from "./pages/sign-up/sign-up.component";
 
 
 const routes: Routes = [
@@ -17,7 +19,8 @@ const routes: Routes = [
   {path: 'hospitals', component: HospitalListComponent},
   {path: 'records-hospitals', component: RecordsAllHospitalsComponent},
   {path: 'records-one-hospital', component: RecordsOneHospitalComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'sign-up', component: SignUpComponent},
   {path: 'records', loadChildren: () => import('./pages/records/records.module').then(m => m.RecordsModule)},
 ];
 
