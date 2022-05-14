@@ -8,7 +8,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CardShowQrComponent} from './components/card-show-qr/card-show-qr.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,6 +25,11 @@ import {QrCodeComponent} from './components/qr-code/qr-code.component';
 import {MatListModule} from '@angular/material/list';
 import {RecordsAllHospitalsComponent} from './pages/records-all-hospitals/records-all-hospitals.component';
 import {RecordsOneHospitalComponent} from './pages/records-one-hospital/records-one-hospital.component';
+import {LoginComponent} from './pages/login/login.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -40,7 +45,9 @@ import {RecordsOneHospitalComponent} from './pages/records-one-hospital/records-
     HospitalListComponent,
     QrCodeComponent,
     RecordsAllHospitalsComponent,
-    RecordsOneHospitalComponent
+    RecordsOneHospitalComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,11 @@ import {RecordsOneHospitalComponent} from './pages/records-one-hospital/records-
     MatToolbarModule,
     MatIconModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
