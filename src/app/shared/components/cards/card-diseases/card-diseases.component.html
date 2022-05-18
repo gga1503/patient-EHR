@@ -1,12 +1,14 @@
 <div class="card card-disease-image mt-3 items-center justify-start position-relative border-0">
   <div class="col-12 d-flex">
-    <div class="card-body" routerLink="/records-hospitals">
+    <!--    <div class="card-body" routerLink="/records-hospitals">-->
+    <div *ngFor="let element of diseases" class="card-body" routerLink="/records-hospitals">
       <div class="d-flex align-items-center" style="justify-content: space-between">
         <div>
           <span class="disease-icon">
-            <img alt="covid19" class="rounded-circle" height="35" src="../../../assets/images/covid19.png" width="35">
+            <img alt="covid19" class="rounded-circle" height="35" src="../../../../../assets/images/covid19.png"
+                 width="35">
           </span>
-          <span class="px-3 fs-5 fw-light">Covid-19</span>
+          <span class="px-3 fs-5 fw-light">{{element.diseases.name}}</span>
         </div>
         <div>
           <i class="material-icons icon">chevron_right</i>
