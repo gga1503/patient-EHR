@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {QrCodeComponent} from "../qr-code/qr-code.component";
+import {QrCodeComponent} from "../../qr-code/qr-code.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
 @Component({

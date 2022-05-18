@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {ApiService} from "../../shared/services/api/api.service";
+import {FormBuilder} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,10 +13,20 @@ import {FormControl, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]);
   hideRequiredControl = new FormControl(false);
 
-  constructor() {
+  // password = new FormControl('', [Validators.required]);
+
+  login = this.formBuilder.group({
+    "password": "patient123",
+    "email": "patient@gmail.com"
+  })
+
+  constructor(
+    private api: ApiService,
+    private formBuilder: FormBuilder,
+    private router: Router) {
   }
 
   getErrorMessage() {
@@ -27,4 +40,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  async submit() {
+    const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
+    this.api.get(target).subscribe(
+      async (patient: any) => localStorage.setItem('patient', JSON.stringify(patient)),
+      (err: any) => console.error(err),
+      async () => {
+        const patient = JSON.parse(<string>localStorage.getItem('patient'))
+        console.log(`Patient ${patient.name} has been logged in sucessfully!`)
+        await this.router.navigate(['/home']);
+      }
+    );
+  }
 }
