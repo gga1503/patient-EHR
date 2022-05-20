@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./bottom-navbar.component.scss']
 })
 export class BottomNavbarComponent implements OnInit {
+  patient: any = null
 
   constructor(
     private router: Router
@@ -15,6 +16,8 @@ export class BottomNavbarComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.checkSession()
+
+    this.patient = JSON.parse(<string>localStorage.getItem('patient'))
   }
 
   async checkSession() {
