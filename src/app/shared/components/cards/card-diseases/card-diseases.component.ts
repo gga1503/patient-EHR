@@ -6,7 +6,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
   styleUrls: ['./card-diseases.component.scss']
 })
 export class CardDiseasesComponent implements OnInit, OnChanges {
-  @Input() disease_groups: any
+  @Input() diseases: any
 
   constructor() {
   }
