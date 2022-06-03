@@ -16,7 +16,7 @@ export class ApiService {
     return this.http.get<any>(this.root + destination)
   }
 
-  post(target: String, data: any): Observable<any> {
+  post(target: string, data: any): Observable<any> {
     return this.http.post<any>(this.root + target, data);
   }
 }
