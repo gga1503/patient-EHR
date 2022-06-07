@@ -8,7 +8,9 @@
     <h1>Find a Hospital</h1>
     <app-search-bar></app-search-bar>
 
-    <app-card-hospitals></app-card-hospitals>
+    <div class="cards-list">
+      <card-hospital *ngFor="let hospital of hospitals" [hospital]="hospital.data"></card-hospital>
+    </div>
   </div>
 
   <app-bottom-navbar></app-bottom-navbar>

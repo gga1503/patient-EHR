@@ -25,4 +25,16 @@ export class BottomNavbarComponent implements OnInit {
       await this.router.navigate(['login'])
     }
   }
+
+  goToHome() {
+    this.router.navigate(['home']);
+  }
+
+  goToHospitals() {
+    this.router.navigate(['hospitals']);
+  }
+
+  goToProfile() {
+    this.router.navigate(['profile']);
+  }
 }

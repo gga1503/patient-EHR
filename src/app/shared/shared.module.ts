@@ -11,9 +11,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {CardShowQrComponent} from "./components/cards/card-show-qr/card-show-qr.component";
-import {CardDiseasesComponent} from "./components/cards/card-diseases/card-diseases.component";
-import {CardHospitalsComponent} from "./components/cards/card-hospitals/card-hospitals.component";
-import {CardDiseasesDetailComponent} from "./components/cards/card-diseases-detail/card-diseases-detail.component";
+import {DiseaseCardComponent} from "./components/cards/disease/disease.card.component";
+import {HospitalCardComponent} from "./components/cards/hospital/hospital.card.component";
+import {RecordCardComponent} from "./components/cards/record/record.card.component";
 import {SearchBarComponent} from "./components/search-bar/search-bar.component";
 import {BottomNavbarComponent} from "./components/bottom-navbar/bottom-navbar.component";
 import {QrCodeComponent} from "./components/qr-code/qr-code.component";
@@ -26,9 +26,9 @@ import {QRCodeModule} from "angularx-qrcode";
 @NgModule({
   declarations: [
     CardShowQrComponent,
-    CardDiseasesComponent,
-    CardHospitalsComponent,
-    CardDiseasesDetailComponent,
+    DiseaseCardComponent,
+    HospitalCardComponent,
+    RecordCardComponent,
     SearchBarComponent,
     BottomNavbarComponent,
     QrCodeComponent,
@@ -53,9 +53,9 @@ import {QRCodeModule} from "angularx-qrcode";
   ],
   exports: [
     CardShowQrComponent,
-    CardDiseasesComponent,
-    CardHospitalsComponent,
-    CardDiseasesDetailComponent,
+    DiseaseCardComponent,
+    HospitalCardComponent,
+    RecordCardComponent,
     SearchBarComponent,
     BottomNavbarComponent,
     QrCodeComponent,

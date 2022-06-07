@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-records',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
+  diseases = JSON.parse(<string>sessionStorage.getItem('disease'))
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

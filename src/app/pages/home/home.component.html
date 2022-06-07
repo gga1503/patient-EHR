@@ -6,14 +6,14 @@
       <h3>How's your day?</h3>
     </div>
 
-    <app-card-show-qr></app-card-show-qr>
+    <app-card-show-qr [qrData]="bc_address"></app-card-show-qr>
 
     <div class="searchDisease">
       <h2>Disease</h2>
       <app-search-bar></app-search-bar>
     </div>
 
-    <app-card-diseases [diseases]="diseases"></app-card-diseases>
+    <card-disease *ngFor="let disease of diseases" [disease]="disease"></card-disease>
   </div>
 
   <app-bottom-navbar></app-bottom-navbar>

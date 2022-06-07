@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QrCodeComponent} from "../../qr-code/qr-code.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
@@ -9,11 +9,13 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 })
 export class CardShowQrComponent implements OnInit {
 
+  @Input() qrData: any;
+
   constructor(private _bottomSheet: MatBottomSheet) {
   }
 
   showQrBottomModal() {
-    this._bottomSheet.open(QrCodeComponent);
+    this._bottomSheet.open(QrCodeComponent, {data: JSON.stringify(this.qrData)});
   }
 
 

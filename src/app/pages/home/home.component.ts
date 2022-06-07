@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   patient = JSON.parse(<string>localStorage.getItem('patient'));
 
   diseases: any = [];
+  bc_address: any
 
   constructor(private Crypto: CryptoService, private router: Router,
               private api: ApiService) {
@@ -27,10 +28,11 @@ export class HomeComponent implements OnInit {
       privateKey: await this.Crypto.ECDH.importPrivateKey(this.patient.ecdh_private_key)
     }
 
-    this.getRecords()
+    this.getDiseases()
+    this.bc_address = this.patient.bc_address;
   }
 
-  getRecords(): void {
+  getDiseases(): void {
     this.api.get(`patients/${this.patient.bc_address}/diseases`).subscribe(
       async response => {
         await this.decrypt(response)
