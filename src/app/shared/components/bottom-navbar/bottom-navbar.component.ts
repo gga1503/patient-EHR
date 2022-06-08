@@ -26,15 +26,15 @@ export class BottomNavbarComponent implements OnInit {
     }
   }
 
-  goToHome() {
-    this.router.navigate(['home']);
+  async goToHome() {
+    await this.router.navigate(['home']);
   }
 
-  goToHospitals() {
-    this.router.navigate(['hospitals']);
+  async goToHospitals() {
+    await this.router.navigate(['hospitals']);
   }
 
-  goToProfile() {
-    this.router.navigate(['profile']);
+  async goToProfile() {
+    await this.router.navigate(['profile']);
   }
 }

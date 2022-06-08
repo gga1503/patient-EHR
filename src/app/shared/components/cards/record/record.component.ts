@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'card-record',
-  templateUrl: './record.card.component.html',
-  styleUrls: ['./record.card.component.scss']
+  templateUrl: './record.component.html',
+  styleUrls: ['./record.component.scss']
 })
-export class RecordCardComponent implements OnInit {
+export class RecordComponent implements OnInit {
 
   constructor() {
   }

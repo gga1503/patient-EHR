@@ -7,7 +7,7 @@ import {ApiService} from "../../../shared/services/api/api.service";
   styleUrls: ['./hospitals.component.scss']
 })
 export class HospitalsComponent implements OnInit {
-  hospitals: any
+  hospitals: any = []
 
   constructor(private api: ApiService) {
   }
@@ -17,15 +17,27 @@ export class HospitalsComponent implements OnInit {
   }
 
   get_hospitals() {
-    const observable = {
-      next: (response: any) => this.hospitals = response,
-      error: (err: Error) => console.error(err),
-      complete: async () => {
-        subscription.unsubscribe()
-      }
-    }
+    const diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
 
-    const subscription = this.api.get(`hospitals/`).subscribe(observable)
+    diseases.forEach((disease: any) => {
+      disease.ciphers.forEach((cipher: any) => {
+        if (this.hospitals.findIndex((hospital: any) => {
+          return hospital.bc_address == cipher.hospital.bc_address
+        }) == -1) {
+          this.hospitals.push(cipher.hospital)
+        }
+      })
+    })
+
+
+    // const observable = {
+    //   next: (response: any) => this.hospitals = response,
+    //   error: (err: Error) => console.error(err),
+    //   complete: async () => {
+    //     subscription.unsubscribe()
+    //   }
+    // }
+    //
+    // const subscription = this.api.get(`hospitals/`).subscribe(observable)
   }
-
 }

@@ -4,11 +4,11 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 
 
 @Component({
-  selector: 'app-hospitals-records',
-  templateUrl: './hospitals-records.component.html',
-  styleUrls: ['./hospitals-records.component.scss']
+  selector: 'app-hospitals-diseases',
+  templateUrl: './hospitals-diseases.component.html',
+  styleUrls: ['./hospitals-diseases.component.scss']
 })
-export class HospitalsRecordsComponent implements OnInit {
+export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
   qrData: any
 

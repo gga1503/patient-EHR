@@ -15,9 +15,7 @@ import {ApiService} from "../../shared/services/api/api.service";
 export class HomeComponent implements OnInit {
   placeHolders = "Search Disease";
   patient = JSON.parse(<string>localStorage.getItem('patient'));
-
   diseases: any = [];
-  bc_address: any
 
   constructor(private Crypto: CryptoService, private router: Router,
               private api: ApiService) {
@@ -29,14 +27,18 @@ export class HomeComponent implements OnInit {
     }
 
     this.getDiseases()
-    this.bc_address = this.patient.bc_address;
   }
 
   getDiseases(): void {
-    this.api.get(`patients/${this.patient.bc_address}/diseases`).subscribe(
-      async response => {
-        await this.decrypt(response)
-      })
+    const observable = {
+      next: async (response: any) => await this.decrypt(response),
+      error: (err: Error) => console.error(err),
+      complete: async () => {
+        subscription.unsubscribe()
+      }
+    }
+
+    const subscription = this.api.get(`patients/${this.patient.bc_address}/diseases`).subscribe(observable)
   }
 
   async decrypt(groups: any) {
@@ -58,8 +60,7 @@ export class HomeComponent implements OnInit {
         )
       }
     }
-
-    console.log(this.diseases)
+    sessionStorage.setItem('diseases', JSON.stringify(this.diseases))
   }
 
   /**
@@ -73,15 +74,17 @@ export class HomeComponent implements OnInit {
       return e.name == disease_name
     })
 
+    cipher.hospital = hospital
+
     if (index == -1) {
       const group = {
         name: disease_name,
-        ciphers: [{hospital, cipher}]
+        ciphers: [cipher]
       }
 
       this.diseases.push(group)
     } else {
-      this.diseases[index].ciphers.push({hospital, cipher})
+      this.diseases[index].ciphers.push(cipher)
     }
   }
 

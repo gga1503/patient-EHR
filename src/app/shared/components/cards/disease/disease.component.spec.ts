@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RecordCardComponent} from './record.card.component';
+import {DiseaseComponent} from './disease.component';
 
-describe('RecordCardComponent', () => {
-  let component: RecordCardComponent;
-  let fixture: ComponentFixture<RecordCardComponent>;
+describe('DiseaseComponent', () => {
+  let component: DiseaseComponent;
+  let fixture: ComponentFixture<DiseaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RecordCardComponent]
+      declarations: [DiseaseComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecordCardComponent);
+    fixture = TestBed.createComponent(DiseaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
