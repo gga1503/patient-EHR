@@ -15,6 +15,6 @@
       <h2>List Disease</h2>
     </div>
 
-    <card-disease></card-disease>
+    <card-disease *ngFor="let disease of hospital.diseases" [disease]="disease"></card-disease>
   </div>
 </div>
