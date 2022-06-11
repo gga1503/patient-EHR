@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {CryptoService} from '../../shared/services/crypto/crypto.service';
-import {SearchBarComponent} from "../../shared/components/search-bar/search-bar.component";
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import {QrCodeComponent} from "../../shared/components/qr-code/qr-code.component";
 import {Router} from "@angular/router";
 import {ApiService} from "../../shared/services/api/api.service";
 

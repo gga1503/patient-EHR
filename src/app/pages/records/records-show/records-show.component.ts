@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-records-show',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./records-show.component.scss']
 })
 export class RecordsShowComponent implements OnInit {
+  record = JSON.parse(<string>sessionStorage.getItem('record'))
+  disease = JSON.parse(<string>sessionStorage.getItem('disease'))
 
-  constructor() { }
+  constructor(
+    private location: Location
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
+  back() {
+    this.location.back()
+  }
 }

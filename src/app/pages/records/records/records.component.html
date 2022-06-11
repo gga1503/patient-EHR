@@ -8,6 +8,6 @@
   </header>
 
   <div class="content">
-    <card-record *ngFor="let records of records" [record]="records"></card-record>
+    <card-record *ngFor="let record of records; let i = index" [record]="record" (click)="show(i)"></card-record>
   </div>
 </div>
