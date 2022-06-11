@@ -16,28 +16,24 @@ export class HospitalComponent implements OnInit {
     console.log(this.hospital)
   }
 
-  async choose_hospital() {
+  async show() {
     const diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
-    this.hospital.diseases = []
 
-    diseases.forEach((disease: any) => {
-      disease.ciphers.forEach((cipher: any) => {
-          if (cipher.hospital.bc_address == this.hospital.bc_address) {
-            const object = {
-              name: disease.name,
-              cipher: cipher.name,
-              date: cipher.date,
-              _id: cipher._id
-            }
-
-            this.hospital.diseases.push(object)
+    diseases.forEach((disease: any, i: number, diseases: any) => {
+      disease.ciphers.forEach((cipher: any, j: number, ciphers: any) => {
+          if (cipher.hospital.bc_address != this.hospital.bc_address) {
+            ciphers.splice(j, 1)
           }
         }
       )
+
+      if (disease.ciphers.length == 0) {
+        diseases.splice(i, 1)
+      }
     })
 
+    sessionStorage.setItem('hospital-diseases', JSON.stringify(diseases))
     sessionStorage.setItem('hospital', JSON.stringify(this.hospital))
-
     await this.router.navigate(['hospitals/diseases'])
   }
 }

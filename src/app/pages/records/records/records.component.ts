@@ -11,7 +11,6 @@ import {Location} from '@angular/common';
 export class RecordsComponent implements OnInit {
   // diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
   disease = JSON.parse(<string>sessionStorage.getItem('disease'))
-  patient = JSON.parse(<string>localStorage.getItem('patient'));
   records: any = []
 
   constructor(private location: Location, private api: ApiService, private Crypto: CryptoService) {
