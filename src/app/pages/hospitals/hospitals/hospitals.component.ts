@@ -9,7 +9,7 @@ import {ApiService} from "../../../shared/services/api/api.service";
 export class HospitalsComponent implements OnInit {
   hospitals: any = []
 
-  constructor(private api: ApiService) {
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -28,16 +28,5 @@ export class HospitalsComponent implements OnInit {
         }
       })
     })
-
-
-    // const observable = {
-    //   next: (response: any) => this.hospitals = response,
-    //   error: (err: Error) => console.error(err),
-    //   complete: async () => {
-    //     subscription.unsubscribe()
-    //   }
-    // }
-    //
-    // const subscription = this.api.get(`hospitals/`).subscribe(observable)
   }
 }
