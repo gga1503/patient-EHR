@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../../shared/services/api/api.service";
 import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-records',
@@ -9,12 +10,15 @@ import {Location} from '@angular/common';
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
-  // diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
   disease = JSON.parse(<string>sessionStorage.getItem('disease'))
+  patient = JSON.parse(<string>localStorage.getItem('patient'))
   records: any = []
 
-  constructor(private location: Location, private api: ApiService, private Crypto: CryptoService) {
-
+  constructor(
+    private location: Location,
+    private api: ApiService,
+    private Crypto: CryptoService,
+    private router: Router) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -35,12 +39,9 @@ export class RecordsComponent implements OnInit {
     const observable = {
       next: (response: any) => {
         this.records = response
-        console.log('response', response)
         this.records.forEach((record: any) => {
           this.getHospital(record)
         })
-
-        console.log(this.records)
       },
       error: (err: Error) => console.error(err),
       complete: async () => subscription.unsubscribe()
@@ -61,28 +62,10 @@ export class RecordsComponent implements OnInit {
     })
   }
 
-  // async generateKeys() {
-  //   this.hospital.ecdh = {
-  //     publicKey: await this.Crypto.ECDH.importPublicKey(this.hospital.ecdh_public_key),
-  //   }
-  //   this.patient.ecdh = {
-  //     privateKey: await this.Crypto.ECDH.importPrivateKey(this.patient.ecdh_private_key)
-  //   }
-  //
-  //   this.secretKey = await this.Crypto.ECDH.computeSecret(this.patient.ecdh.privateKey, this.hospital.ecdh.publicKey)
-  // }
-
-  // async decrypt() {
-  //   for (let j = 0; j < this.records.length; j++) {
-  //     await this.generateKeys()
-  //
-  //     const record = this.Crypto.AES.decrypt(
-  //       this.records[j],
-  //       this.secretKey,
-  //       this.patient.iv
-  //     )
-  //   }
-  //   sessionStorage.setItem('records', JSON.stringify(this.records))
-  // }
-
+  async show(i: any) {
+    const record = this.records[i]
+    record.decipher = this.Crypto.AES.decrypt(record.diagnose, record.hospital.secretKey, this.patient.salt)
+    sessionStorage.setItem('record', JSON.stringify(record))
+    await this.router.navigate(['records/show'])
+  }
 }

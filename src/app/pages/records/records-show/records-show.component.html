@@ -2,28 +2,29 @@
   <div class="rectangle"></div>
   <header>
     <div class="header-component row">
-      <span class="material-icons col-3">arrow_back_ios</span>
-      <h2 class="col-6">EHR Detail</h2>
+      <span class="material-icons col-3" (click)="back()">arrow_back_ios</span>
+      <h2 class="col-6">{{disease.name}}</h2>
     </div>
   </header>
 
   <div class="content">
-    <h1>Date</h1>
-    <h2>Blockchain Code: </h2>
+    <h1>{{record.date | date}}</h1>
+    <h2>Blockchain Code:</h2>
+    <h3>{{record.bc_tx_address}}</h3>
     <!--    value={{patients.hospitals.cipher.diagnoses[0].date}}-->
 
     <div class="read-ehr mt-5">
       <div class="mb-5">
-        <label class="left-section-title col-form-label-lg">Disease</label>
-        <h3>Diabetes</h3>
+        <label class="left-section-title col-sm-3 col-form-label-lg">Hospital:</label>
+        <h3>{{record.hospital.name}}</h3>
       </div>
       <div class="mb-5">
-        <label class="left-section-title col-sm-3 col-form-label-lg">Hospital</label>
-        <h3>Husada</h3>
+        <label class="left-section-title col-form-label-lg">Doctor:</label>
+        <h3>dr. {{record.doctor.name}}</h3>
       </div>
       <div class="mb-4">
-        <label class="left-section-title col-sm-3 col-form-label-lg">Diagnose</label>
-        <p>Detail Diagnose</p>
+        <label class="left-section-title col-sm-3 col-form-label-lg">Diagnose:</label>
+        <p>{{record.decipher}}</p>
       </div>
     </div>
   </div>

@@ -13,7 +13,6 @@ export class HospitalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.hospital)
   }
 
   async show() {

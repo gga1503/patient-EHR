@@ -3,7 +3,8 @@
   <div class="content">
     <div class="title">
       <h1 class="mat-display-1">Welcome</h1>
-      <h3>How's your day?</h3>
+      <h3>{{patient.name}}</h3>
+      {{diseases}}
     </div>
 
     <app-card-show-qr [qrData]="patient.bc_address"></app-card-show-qr>
