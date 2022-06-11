@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {QRCodeModule} from "angularx-qrcode";
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {QRCodeModule} from "angularx-qrcode";
     MatFormFieldModule,
     MatIconModule,
     QRCodeModule,
+    RouterModule
   ],
   exports: [
     CardShowQrComponent,
