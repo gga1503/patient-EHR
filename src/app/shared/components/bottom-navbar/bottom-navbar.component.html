@@ -1,17 +1,18 @@
 <footer>
   <mat-toolbar class="toolbarNav">
-    <button (click)="goToHome()" mat-flat-button>
+    <button class='target' mat-flat-button
+            routerLink="/home" routerLinkActive="active">
       <mat-icon class="material-icons color_blue">
         assignment
       </mat-icon>
       <span>Health Record</span>
     </button>
-    <button (click)="goToHospitals()" mat-flat-button>
+    <button mat-flat-button routerLink="/hospitals" routerLinkActive="active">
       <mat-icon class="material-icons color_blue">local_hospital
       </mat-icon>
       <span>Hospitals</span>
     </button>
-    <button (click)="goToProfile()" mat-flat-button>
+    <button mat-flat-button routerLink="/profile" routerLinkActive="active">
       <mat-icon class="material-icons color_blue">person</mat-icon>
       <span>Profile</span>
     </button>

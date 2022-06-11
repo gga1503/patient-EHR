@@ -2,12 +2,12 @@
   <div class="rectangle"></div>
   <header>
     <div class="header-component row">
-      <span class="material-icons col-3" routerLink="/home">arrow_back_ios</span>
-      <h2 class="col-6">{{diseases.name}}</h2>
+      <span (click)=previousPage() class="material-icons col-3">arrow_back_ios</span>
+      <h2 class="col-6">{{disease.name}}</h2>
     </div>
   </header>
 
   <div class="content">
-    <card-record></card-record>
+    <card-record *ngFor="let records of records" [record]="records"></card-record>
   </div>
 </div>

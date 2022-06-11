@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
 
   getDiseases(): void {
     const observable = {
-      next: async (response: any) => await this.decrypt(response),
+      next: async (response: any) => {
+        await this.decrypt(response)
+      },
       error: (err: Error) => console.error(err),
       complete: async () => {
         subscription.unsubscribe()

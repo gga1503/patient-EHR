@@ -11,6 +11,7 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
   qrData: any
+  diseases: any
 
   patient = JSON.parse(<string>localStorage.getItem('patient'))
   hospital = JSON.parse(<string>sessionStorage.getItem('hospital'))
@@ -19,11 +20,10 @@ export class HospitalsDiseasesComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.secretKey = await this.getSecretKey()
 
     this.qrData = {
       bc: this.hospital.bc_address,
-      sk: this.secretKey
+      sk: this.hospital.ecdh.secretKey
     }
   }
 
@@ -31,16 +31,17 @@ export class HospitalsDiseasesComponent implements OnInit {
     this.location.back();
   }
 
-  async getSecretKey() {
-    this.patient.ecdh = {
-      privateKey: await this.Crypto.ECDH.importPrivateKey(this.patient.ecdh_private_key)
-    }
+  get_Diseases() {
+    const diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
 
-    this.hospital.ecdh = {
-      publicKey: await this.Crypto.ECDH.importPublicKey(this.hospital.ecdh_public_key)
-    }
-
-    return await this.Crypto.ECDH.computeSecret(this.patient.ecdh.privateKey, this.hospital.ecdh.publicKey)
+    diseases.forEach((disease: any) => {
+      disease.ciphers.forEach((cipher: any) => {
+        if (this.diseases.findIndex((disease: any) => {
+          return disease.bc_address == cipher.hospital.bc_address
+        }) == -1) {
+          this.diseases.push(cipher.disease)
+        }
+      })
+    })
   }
-
 }

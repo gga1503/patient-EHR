@@ -2,14 +2,16 @@
   <div class="col-xl-6 col-md-12">
     <div class="card overflow-hidden">
       <div class="card-content">
-        <div class="card-body" routerLink="records/">
+        <div class="card-body">
           <div class="media d-flex justify-content-between">
             <div class="media-body">
-              <h3>Diabetes</h3>
-              <span style="font-size: 12pt">Husada</span>
+              <h3>{{record.doctor.name}}</h3>
+              <span style="font-size: 12pt">{{record.hospital.name}}</span>
             </div>
             <div class="align-self-center">
-              <h1>21 Feb 22</h1>
+              <h1>
+                <div>{{record.date | date}}</div>
+              </h1>
             </div>
           </div>
         </div>
