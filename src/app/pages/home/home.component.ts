@@ -3,6 +3,7 @@ import {CryptoService} from '../../shared/services/crypto/crypto.service';
 import {Router} from "@angular/router";
 import {ApiService} from "../../shared/services/api/api.service";
 
+// import {DisplayText} from "../../shared/components/cards/card-show-qr/card-show-qr.component";
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,26 @@ import {ApiService} from "../../shared/services/api/api.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  placeHolders = "Search Disease";
+  placeholder = "Search Disease";
   patient = JSON.parse(<string>localStorage.getItem('patient'));
   diseases: any = [];
+
+  infoCard = {
+    title: 'Public Key QR Code',
+    des: 'Show Public QR Code to every first visit hospital every first visit hospital',
+  };
 
   constructor(private Crypto: CryptoService, private router: Router,
               private api: ApiService) {
   }
 
   async ngOnInit(): Promise<void> {
+    console.log(this.patient)
+
+    console.log(await this.Crypto.ECDH.generateKeys())
+
+    console.log(this.patient)
+
     this.patient.ecdh = {
       privateKey: await this.Crypto.ECDH.importPrivateKey(this.patient.ecdh_private_key)
     }
@@ -30,6 +42,7 @@ export class HomeComponent implements OnInit {
     const observable = {
       next: async (response: any) => {
         await this.decrypt(response)
+        // console.log(response)
       },
       error: (err: Error) => console.error(err),
       complete: async () => {

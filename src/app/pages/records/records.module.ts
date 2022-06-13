@@ -5,17 +5,19 @@ import {RecordsRoutingModule} from './records-routing.module';
 import {RecordsComponent} from './records/records.component';
 import {RecordsShowComponent} from './records-show/records-show.component';
 import {SharedModule} from "../../shared/shared.module";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
   declarations: [
     RecordsComponent,
-    RecordsShowComponent
+    RecordsShowComponent,
   ],
   imports: [
     SharedModule,
     CommonModule,
-    RecordsRoutingModule
+    RecordsRoutingModule,
+    MatCardModule
   ],
   exports: [
     RecordsComponent,

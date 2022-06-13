@@ -7,9 +7,9 @@ import {catchError, retry} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  root = 'http://localhost:3000/'
+  // root = 'http://192.168.1.5:3000/'
 
-  // root = 'http://localhost:3000/'
+  root = 'http://localhost:3000/'
 
   constructor(private http: HttpClient) {
   }

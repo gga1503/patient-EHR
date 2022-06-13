@@ -7,7 +7,7 @@
   <div class="content">
     <h1>Find a Hospital</h1>
 
-    <app-search-bar></app-search-bar>
+    <app-search-bar [placeholder]="placeholder"></app-search-bar>
 
     <div class="cards-list">
       <card-hospital *ngFor="let hospital of hospitals" [hospital]="hospital"></card-hospital>

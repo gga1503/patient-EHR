@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 
+// import {DisplayText} from "../../../shared/components/cards/card-show-qr/card-show-qr.component";
+
 
 @Component({
   selector: 'app-hospitals-diseases',
@@ -10,7 +12,12 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 })
 export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
-  qrData: any
+  qrData: any;
+
+  infoCard = {
+    title: 'Secret Key QR Code',
+    des: 'Show Secret QR Code to give access to your medical records in this hospital',
+  };
 
   patient = JSON.parse(<string>localStorage.getItem('patient'))
   hospital = JSON.parse(<string>sessionStorage.getItem('hospital'))

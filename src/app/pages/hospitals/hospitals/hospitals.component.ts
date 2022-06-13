@@ -8,6 +8,7 @@ import {ApiService} from "../../../shared/services/api/api.service";
 })
 export class HospitalsComponent implements OnInit {
   hospitals: any = []
+  placeholder = "Search Hospital";
 
   constructor() {
   }

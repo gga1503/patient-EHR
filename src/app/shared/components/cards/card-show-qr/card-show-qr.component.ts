@@ -7,9 +7,15 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
   templateUrl: './card-show-qr.component.html',
   styleUrls: ['./card-show-qr.component.scss']
 })
+
 export class CardShowQrComponent implements OnInit {
 
+  @Input() infoCard: any;
   @Input() qrData: any;
+  @Input() title: any;
+  @Input() description: any;
+
+  // @Input() infoCard: DisplayText | undefined;
 
   constructor(private _bottomSheet: MatBottomSheet) {
   }

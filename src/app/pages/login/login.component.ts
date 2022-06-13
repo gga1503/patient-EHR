@@ -38,21 +38,37 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   async submit() {
+    // const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
+    // this.api.get(target).subscribe(
+    //   async (patient: any) => {
+    //     patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
+    //     localStorage.setItem('patient', JSON.stringify(patient))
+    //   },
+    //   (err: any) => console.error(err),
+    //   async () => {
+    //     const patient = JSON.parse(<string>localStorage.getItem('patient'))
+    //     console.log(`Patient ${patient.name} has been logged in sucessfully!`)
+    //     await this.router.navigate(['/home']);
+    //   }
+    // );
+
     const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
-    this.api.get(target).subscribe(
-      async (patient: any) => {
-        patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
-        localStorage.setItem('patient', JSON.stringify(patient))
-      },
-      (err: any) => console.error(err),
-      async () => {
-        const patient = JSON.parse(<string>localStorage.getItem('patient'))
-        console.log(`Patient ${patient.name} has been logged in sucessfully!`)
-        await this.router.navigate(['/home']);
+
+    const observable = {
+      next: (response: any) => {
+        response.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
+        localStorage.setItem('patient', JSON.stringify(response))
+      }, error: (err: Error) => console.error(err),
+      complete: async () => {
+        subscription.unsubscribe()
+        await this.router.navigate(['home'])
       }
-    );
+    }
+
+    const subscription = this.api.get(target).subscribe(observable);
   }
 }

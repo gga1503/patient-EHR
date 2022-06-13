@@ -23,7 +23,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {QRCodeModule} from "angularx-qrcode";
 import {RouterModule} from '@angular/router';
 
-
 @NgModule({
   declarations: [
     CardShowQrComponent,
