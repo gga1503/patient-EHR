@@ -4,11 +4,14 @@
   <header>
     <div class="header-component row">
       <span (click)=previousPage() class="material-icons col-3">arrow_back_ios</span>
-      <h2 class="col-6">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>
+      <!--      <h2 class="col-6">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>-->
     </div>
   </header>
   <div class="content">
-
+    <div class="hospital-image mb-3">
+      <img src="../../../../../assets/images/pharmacyb.png"/>
+    </div>
+    <h2 class="hospital-name mb-4">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>
     <app-card-show-qr [infoCard]="infoCard" [qrData]="qrData"></app-card-show-qr>
 
     <div class="listDisease">
