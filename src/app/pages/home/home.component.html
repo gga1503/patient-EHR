@@ -2,16 +2,16 @@
   <div class="rectangle"></div>
   <div class="content">
     <div class="title">
-      <h1 class="mat-display-1">Welcome</h1>
-      <h3>{{patient.name}}</h3>
+      <h1 class="mat-display-1">Welcome!</h1>
+      <h2 class="patient-name">{{patient.name}}</h2>
       {{diseases}}
     </div>
 
-    <app-card-show-qr [qrData]="patient.bc_address"></app-card-show-qr>
+    <app-card-show-qr [infoCard]="infoCard" [qrData]="patient.bc_address"></app-card-show-qr>
 
     <div class="searchDisease">
       <h2>Disease</h2>
-      <app-search-bar></app-search-bar>
+      <app-search-bar [placeholder]="placeholder"></app-search-bar>
     </div>
 
     <card-disease *ngFor="let disease of diseases" [disease]="disease"></card-disease>

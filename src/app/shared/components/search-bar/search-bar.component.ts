@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 
@@ -8,9 +8,10 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-  placeHolders: string = "Search Disease";
+  @Input() placeholder: any
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,8 @@
 <div class="search-container">
   <form #searchBar="ngForm" (ngSubmit)="onSubmit(searchBar)" class="search-form">
+    <span class="material-symbols-outlined icon">search</span>
     <input
-      [placeholder]="placeHolders"
+      [placeholder]="placeholder"
       class="search-input"
       name="searchBar"
       ngModel
