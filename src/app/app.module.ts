@@ -11,13 +11,15 @@ import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {SharedModule} from "./shared/shared.module";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {ProfileComponent} from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     SharedModule,
