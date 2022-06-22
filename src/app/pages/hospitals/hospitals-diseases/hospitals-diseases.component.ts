@@ -13,7 +13,7 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
 
-  infoCard = {
+  info = {
     title: 'Secret Key QR Code',
     des: 'Show Secret QR Code to give access to your medical records in this hospital',
   };
