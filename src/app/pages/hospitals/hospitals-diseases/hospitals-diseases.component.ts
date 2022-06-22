@@ -12,7 +12,6 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 })
 export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
-  qrData: any;
 
   infoCard = {
     title: 'Secret Key QR Code',
@@ -23,14 +22,16 @@ export class HospitalsDiseasesComponent implements OnInit {
   hospital = JSON.parse(<string>sessionStorage.getItem('hospital'))
   diseases = JSON.parse(<string>sessionStorage.getItem('hospital-diseases'))
 
-  constructor(private location: Location, private Crypto: CryptoService) {
+  qr = {
+    bc: this.hospital.bc_address,
+    sk: this.hospital.ecdh.secretKey
+  }
+
+  constructor(private location: Location) {
   }
 
   async ngOnInit(): Promise<void> {
-    this.qrData = {
-      bc: this.hospital.bc_address,
-      sk: this.hospital.ecdh.secretKey
-    }
+
   }
 
   previousPage() {

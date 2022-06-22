@@ -9,29 +9,24 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 })
 
 export class CardShowQrComponent implements OnInit {
-
-  @Input() infoCard: any;
+  @Input() card: any;
   @Input() qrData: any;
   @Input() title: any;
   @Input() description: any;
 
   // @Input() infoCard: DisplayText | undefined;
 
+
   constructor(private _bottomSheet: MatBottomSheet) {
   }
 
-  showQrBottomModal() {
-    this._bottomSheet.open(QrCodeComponent, {data: JSON.stringify(this.qrData)});
+  ngOnInit(): void {
+    console.log(this.qrData)
   }
 
 
-  // showQrBottomModal() {
-  //   this.matBottomSheet.open(QRCodeComponent, {
-  //     data: "template for bottom sheet"
-  //   });
-  // }
-
-  ngOnInit(): void {
+  showQrBottomModal() {
+    this._bottomSheet.open(QrCodeComponent, {data: JSON.stringify(this.qrData)});
   }
 
 }
