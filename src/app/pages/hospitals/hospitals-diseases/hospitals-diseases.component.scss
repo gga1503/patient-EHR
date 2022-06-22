@@ -4,7 +4,7 @@
 }
 
 .content {
-  padding: 2.3rem 1.3rem 2rem 1.3rem;
+  padding: 0.5rem 1.3rem 2rem 1.3rem;
 }
 
 .title h1 {
@@ -14,7 +14,7 @@
 }
 
 .listDisease {
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 
   h2 {
@@ -28,11 +28,13 @@
 }
 
 .rectangle {
-  height: 330px;
+  height: 310px;
   width: 100vw;
   position: absolute;
   z-index: -1;
   background-color: rgba(96, 164, 245, 0.5);
+  border-bottom-left-radius: 3.5rem;
+  border-bottom-right-radius: 3.5rem;
 }
 
 header {
@@ -50,4 +52,19 @@ header {
 .row {
   --bs-gutter-x: 0rem;
   margin-bottom: 14px;
+}
+
+.hospital-name {
+  font-size: 20pt;
+  text-align: center;
+  font-family: Helvetica;
+  font-weight: 200;
+}
+
+.hospital-image {
+  text-align: center;
+}
+
+img {
+  width: 80px;
 }
