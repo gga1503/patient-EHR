@@ -1,0 +1,21 @@
+<div class="box">
+  <div class="rectangle"></div>
+  <div class="content">
+    <div class="title">
+      <h1 class="mat-display-1">Welcome!</h1>
+      <h2 class="patient-name">{{patient.name}}</h2>
+      {{diseases}}
+    </div>
+
+    <app-card-show-qr [card]="infoCard" [qrData]="qr"></app-card-show-qr>
+
+    <div class="searchDisease">
+      <h2>Disease</h2>
+      <app-search-bar [placeholder]="placeholder"></app-search-bar>
+    </div>
+
+    <card-disease *ngFor="let disease of diseases" [disease]="disease"></card-disease>
+  </div>
+
+  <app-bottom-navbar></app-bottom-navbar>
+</div>

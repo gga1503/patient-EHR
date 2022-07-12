@@ -1,0 +1,13 @@
+<div class="qr-code-modal">
+  <div class="card-details">
+    <!--    <img alt="QrScanner" src="../../../../assets/images/qrscan.png">-->
+    <qrcode [errorCorrectionLevel]="'M'" [qrdata]="data" [width]="335"></qrcode>
+
+    <div class="instruction">
+      <p>Show your QR Code to <br>the doctor to give access to your <span
+        style="font-weight: bolder">health records</span>
+      </p>
+    </div>
+    <a (click)="openLink($event)" class="close-button"></a>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="box">
+  <div class="rectangle"></div>
+
+  <header>
+    <div class="header-component row">
+      <span (click)=previousPage() class="material-icons col-3">arrow_back_ios</span>
+      <!--      <h2 class="col-6">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>-->
+    </div>
+  </header>
+  <div class="content">
+    <div class="hospital-image mb-3">
+      <img src="../../../../../assets/images/pharmacyb.png"/>
+    </div>
+    <h2 class="hospital-name mb-4">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>
+    <app-card-show-qr [card]="info" [qrData]="qr"></app-card-show-qr>
+
+    <div class="listDisease">
+      <h2>List Disease</h2>
+    </div>
+
+    <card-disease *ngFor="let disease of diseases; let i = index" [disease]="disease"></card-disease>
+  </div>
+</div>
