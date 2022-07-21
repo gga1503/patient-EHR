@@ -1,6 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "patient-EHR": "apps/patient-EHR"
+    "patient-EHR": "./apps/patient-EHR"
   }
 }
