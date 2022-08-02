@@ -1,0 +1,14 @@
+<div class="confirmation-card">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+
+  <div mat-dialog-content>
+    <p>{{data.instruction}}</p>
+  </div>
+
+  <div class="confirmation-btn" mat-dialog-actions>
+    <a (click)="onCloseClick()" [mat-dialog-close]="false" class="btn first-btn" mat-button
+       type="submit">{{data.cancel}}</a>
+    <a (click)="onMovePageClick()" [mat-dialog-close]="true" class="btn" mat-button type="submit">{{data.confirm}}</a>
+  </div>
+</div>
+

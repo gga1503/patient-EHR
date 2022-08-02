@@ -12,12 +12,22 @@
 
     <div class="text-center">
       <h1 class="mb-0">{{patient.name}}</h1>
-      <span class="text-email text-muted d-block mb-2">graciela@gmail.com</span>
+      <span class="text-email text-muted d-block mb-3">graciela@gmail.com</span>
+      <div class="password-section">
+        <span class="text-muted material-symbols-outlined lock-icon">lock</span>
+        <span class="text-muted">• • • • • • • • • • •</span>
+      </div>
       <!--      <span class="text-email text-muted d-block mb-2">{{patient.email}}</span>-->
-      <button class="mt-3 btn btn-primary btn-sm edit-btn">Edit</button>
     </div>
 
     <div class="user-profile p-3">
+      <div class="edit-section mb-1">
+        <a href="https://www.freecodecamp.org/">
+          <span class="material-symbols-outlined">edit</span>
+          <a class="mt-1 edit-text">Edit</a>
+        </a>
+      </div>
+
       <div class="user-profile-data">
         <h3 class="key text-muted">Date of Birth</h3>
         <h3 class="value">{{patient.dob| date}}</h3>
@@ -30,16 +40,18 @@
 
       <div class="user-profile-data">
         <h3 class="key text-muted">Address</h3>
-        <h3 class="value">Abacadabra street 22</h3>
+        <h3 class="value">Jl. Kuningan timur 2 no 53</h3>
       </div>
 
       <div class="user-profile-data">
         <h3 class="key text-muted">Phone Number</h3>
-        <h3 class="value">0812345678</h3>
+        <h3 class="value">081264485353</h3>
+      </div>
+
+      <div class="text-center">
+        <button (click)="onOpenDialog()" class="mt-3 btn btn-primary logout-btn text-center">Logout</button>
       </div>
     </div>
-
-    <!--    <app-sxearch-bar [placeholder]="placeholder"></app-sxearch-bar>-->
 
 
   </div>

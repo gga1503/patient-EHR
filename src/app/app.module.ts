@@ -12,6 +12,12 @@ import {SharedModule} from "./shared/shared.module";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {ProfileComponent} from './pages/profile/profile.component';
+import {EditProfileComponent} from './pages/edit-profile/edit-profile.component';
+import {MatRadioModule} from "@angular/material/radio";
+import { ForgotPasswordComponent } from './pages/reset-password/forgot-password/forgot-password.component';
+import { CheckYourMailComponent } from './pages/reset-password/check-your-mail/check-your-mail.component';
+import { CreateNewPasswordComponent } from './pages/reset-password/create-new-password/create-new-password.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +25,11 @@ import {ProfileComponent} from './pages/profile/profile.component';
     HomeComponent,
     LoginComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent,
+    ForgotPasswordComponent,
+    CheckYourMailComponent,
+    CreateNewPasswordComponent
   ],
   imports: [
     SharedModule,
@@ -27,7 +37,8 @@ import {ProfileComponent} from './pages/profile/profile.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

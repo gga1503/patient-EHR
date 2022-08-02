@@ -3,6 +3,7 @@ import {CryptoService} from '../../shared/services/crypto/crypto.service';
 import {Router} from "@angular/router";
 import {ApiService} from "../../shared/services/api/api.service";
 
+
 // import {DisplayText} from "../../shared/components/cards/card-show-qr/card-show-qr.component";
 
 @Component({
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private Crypto: CryptoService,
     private router: Router,
-    private api: ApiService) {
+    private api: ApiService
+  ) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -37,6 +39,7 @@ export class HomeComponent implements OnInit {
 
     this.getDiseases()
   }
+
 
   getDiseases(): void {
     const observable = {
