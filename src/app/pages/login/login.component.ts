@@ -4,7 +4,6 @@ import {ApiService} from "../../shared/services/api/api.service";
 import {FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,12 +15,17 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]);
   hideRequiredControl = new FormControl(false);
 
-  // password = new FormControl('', [Validators.required]);
+  password = new FormControl('', Validators.compose([
+    Validators.minLength(5),
+    Validators.required,
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+  ]));
 
   login = this.formBuilder.group({
     "password": "patient123",
     "email": "patient@gmail.com"
   })
+
 
   constructor(
     private api: ApiService,
@@ -30,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.email.hasError('required') && this.password.hasError('required')) {
       return 'You must enter a value';
     }
 
@@ -40,6 +44,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
 
   async submit() {
     // const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`

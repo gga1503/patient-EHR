@@ -1,15 +1,22 @@
 <div class="box">
   <div class="rectangle"></div>
   <div class="content">
-    <div class="title">
-      <h1 class="mat-display-1">Welcome!</h1>
-      <h2 class="patient-name">{{patient.name}}</h2>
-      {{diseases}}
+    <div class="header-section">
+      <div class="title">
+        <h1 class="mat-display-1">Welcome!</h1>
+        <h2 class="patient-name">{{patient.name}}</h2>
+        {{diseases}}
+      </div>
+
+      <div class="logo">
+        <img class="logo-img" src="../../../../../assets/images/logo.png" width="50">
+      </div>
     </div>
 
     <app-card-show-qr [card]="infoCard" [qrData]="qr"></app-card-show-qr>
 
     <div class="searchDisease">
+
       <h2>Disease</h2>
       <app-search-bar [placeholder]="placeholder"></app-search-bar>
     </div>

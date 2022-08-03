@@ -8,8 +8,8 @@ import Server from './url.json';
   providedIn: 'root'
 })
 export class ApiService {
-  root = Server.https
-  // root = server.http
+  // root = Server.https
+  root = Server.http
 
   constructor(
     private http: HttpClient,

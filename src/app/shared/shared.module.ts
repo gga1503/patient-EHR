@@ -22,6 +22,10 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {QRCodeModule} from "angularx-qrcode";
 import {RouterModule} from '@angular/router';
+import {NotifComponent} from './components/notif/notif.component';
+import {PopUpConfirmationComponent} from './components/pop-up-confirmation/pop-up-confirmation.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import {RouterModule} from '@angular/router';
     SearchBarComponent,
     BottomNavbarComponent,
     QrCodeComponent,
+    NotifComponent,
+    PopUpConfirmationComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +56,9 @@ import {RouterModule} from '@angular/router';
     MatFormFieldModule,
     MatIconModule,
     QRCodeModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     CardShowQrComponent,
