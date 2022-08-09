@@ -6,12 +6,13 @@ import {CryptoService} from "../../../shared/services/crypto/crypto.service";
 
 
 @Component({
-  selector: 'app-hospitals-diseases',
+  selector: 'app-diseases',
   templateUrl: './hospitals-diseases.component.html',
   styleUrls: ['./hospitals-diseases.component.scss']
 })
 export class HospitalsDiseasesComponent implements OnInit {
   secretKey: any;
+  placeholder = "Search Disease";
 
   info = {
     title: 'Secret Key QR Code',

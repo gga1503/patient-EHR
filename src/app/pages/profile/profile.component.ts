@@ -10,7 +10,7 @@ import {ConfirmationService} from "../../shared/services/pop-up/confirmation.ser
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  patient: any
+  patient = JSON.parse(<string>localStorage.getItem('patient'))
   message = 'You have successfully been logged out'
 
   constructor(
@@ -20,11 +20,6 @@ export class ProfileComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.getPatientData()
-  }
-
-  async getPatientData() {
-    this.patient = JSON.parse(<string>localStorage.getItem('patient'))
   }
 
   onOpenDialog() {
@@ -39,22 +34,18 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  onOpenNotif() {
-    this.messageNotif(this.message);
-  }
-
-  messageNotif(message: string) {
+  messageNotif() {
     this.notif.openFromComponent(NotifComponent, {
-      data: message,
+      data: this.message,
       panelClass: ['custom-notif-background'],
       duration: 3000
     });
   }
 
   async logout() {
-    localStorage.removeItem('patient')
+    localStorage.clear()
+    sessionStorage.clear()
     await this.router.navigate(['/login'])
-    this.onOpenNotif()
+    await this.messageNotif()
   }
-
 }

@@ -14,9 +14,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {ProfileComponent} from './pages/profile/profile.component';
 import {EditProfileComponent} from './pages/edit-profile/edit-profile.component';
 import {MatRadioModule} from "@angular/material/radio";
-import { ForgotPasswordComponent } from './pages/reset-password/forgot-password/forgot-password.component';
-import { CheckYourMailComponent } from './pages/reset-password/check-your-mail/check-your-mail.component';
-import { CreateNewPasswordComponent } from './pages/reset-password/create-new-password/create-new-password.component';
+import {ForgotPasswordComponent} from './pages/reset-password/forgot-password/forgot-password.component';
+import {CheckYourMailComponent} from './pages/reset-password/check-your-mail/check-your-mail.component';
+import {CreateNewPasswordComponent} from './pages/reset-password/create-new-password/create-new-password.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CreateNewPasswordComponent } from './pages/reset-password/create-new-pa
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

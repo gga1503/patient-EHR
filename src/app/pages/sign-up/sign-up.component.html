@@ -6,11 +6,11 @@
       <h3>Start your health care here!</h3>
     </div>
 
-    <div class="test">
+    <form (ngSubmit)="submit()" [formGroup]="signUp" class="test">
       <h2>Full Name</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your full name</mat-label>
-        <input matInput placeholder="Noble Joseph Jr" required>
+        <input formControlName="name" matInput placeholder="Noble Joseph Jr" required>
         <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
         <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
       </mat-form-field>
@@ -18,7 +18,7 @@
       <h2>Email</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="user@example.com" required>
+        <input formControlName="email" matInput placeholder="user@example.com" required>
         <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
         <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
       </mat-form-field>
@@ -36,7 +36,7 @@
       <h2>Phone Number</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your phone number</mat-label>
-        <input matInput placeholder="08***" required>
+        <input formControlName="phone" matInput placeholder="08***" required>
         <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
         <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
       </mat-form-field>
@@ -48,7 +48,7 @@
       <div class="bottom">
         <h3 class="mt-5">Already have an account? <a routerLink="/login">Log In</a></h3>
       </div>
-    </div>
+    </form>
 
     <!--    <div class="searchDisease">-->
     <!--      <h2>Disease</h2>-->

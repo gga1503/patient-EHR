@@ -12,7 +12,7 @@ import {CreateNewPasswordComponent} from "./pages/reset-password/create-new-pass
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},

@@ -14,12 +14,12 @@
 }
 
 .listDisease {
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 
   h2 {
-    font-size: 16pt;
-    font-family: Helvetica;
+    font-size: 15pt;
+    margin-bottom: 0.6rem;
   }
 }
 
@@ -28,43 +28,39 @@
 }
 
 .rectangle {
-  height: 310px;
+  height: 230px;
   width: 100vw;
   position: absolute;
   z-index: -1;
   background-color: rgba(96, 164, 245, 0.5);
-  border-bottom-left-radius: 3.5rem;
-  border-bottom-right-radius: 3.5rem;
+  border-bottom-left-radius: 1.7rem;
+  border-bottom-right-radius: 1.7rem;
 }
 
 header {
   padding-top: 1.5rem;
   text-align: center;
-
-  h2 {
-    font-family: Helvetica Neue;
-    font-size: 14pt;
-    font-weight: 500;
-  }
 }
-
 
 .row {
   --bs-gutter-x: 0rem;
   margin-bottom: 14px;
 }
 
-.hospital-name {
-  font-size: 20pt;
-  text-align: center;
-  font-family: Helvetica;
-  font-weight: 200;
+.content-1 {
+  justify-content: center;
+  display: flex;
+  align-items: end;
 }
 
-.hospital-image {
-  text-align: center;
+.hospital-name {
+  font-size: 22pt;
+  font-family: Helvetica;
+  font-weight: 500;
+  margin-bottom: 0;
 }
 
 img {
-  width: 80px;
+  width: 35px;
+  margin-right: 0.8rem;
 }

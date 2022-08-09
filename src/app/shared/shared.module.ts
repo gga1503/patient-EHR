@@ -11,10 +11,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {CardShowQrComponent} from "./components/cards/card-show-qr/card-show-qr.component";
-import {DiseaseComponent} from "./components/cards/disease/disease.component";
-import {HospitalComponent} from "./components/cards/hospital/hospital.component";
+import {DiseasesComponent} from "./sections/diseases/diseases.component";
+import {HospitalComponent} from "./sections/hospital/hospital.component";
 import {RecordComponent} from "./components/cards/record/record.component";
-import {SearchBarComponent} from "./components/search-bar/search-bar.component";
 import {BottomNavbarComponent} from "./components/bottom-navbar/bottom-navbar.component";
 import {QrCodeComponent} from "./components/qr-code/qr-code.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -26,18 +25,19 @@ import {NotifComponent} from './components/notif/notif.component';
 import {PopUpConfirmationComponent} from './components/pop-up-confirmation/pop-up-confirmation.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
     CardShowQrComponent,
-    DiseaseComponent,
+    DiseasesComponent,
     HospitalComponent,
     RecordComponent,
-    SearchBarComponent,
     BottomNavbarComponent,
     QrCodeComponent,
     NotifComponent,
     PopUpConfirmationComponent,
+    DiseasesComponent,
   ],
   imports: [
     CommonModule,
@@ -58,14 +58,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     QRCodeModule,
     RouterModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     CardShowQrComponent,
-    DiseaseComponent,
+    DiseasesComponent,
     HospitalComponent,
     RecordComponent,
-    SearchBarComponent,
     BottomNavbarComponent,
     QrCodeComponent,
     MatFormFieldModule,
