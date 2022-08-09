@@ -2,12 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'card-hospital',
+  selector: 'section-hospital',
   templateUrl: './hospital.component.html',
   styleUrls: ['./hospital.component.scss']
 })
 export class HospitalComponent implements OnInit {
-  @Input() hospital: any
+  @Input() hospitals: any
+  searchHospital: any
 
   constructor(private router: Router) {
   }
@@ -15,12 +16,12 @@ export class HospitalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async show() {
+  async show(hospital: any) {
     const diseases = JSON.parse(<string>sessionStorage.getItem('diseases'))
 
     diseases.forEach((disease: any, i: number, diseases: any) => {
       disease.ciphers.forEach((cipher: any, j: number, ciphers: any) => {
-          if (cipher.hospital.bc_address != this.hospital.bc_address) {
+          if (cipher.hospital.bc_address != hospital.bc_address) {
             ciphers.splice(j, 1)
           }
         }
@@ -32,7 +33,7 @@ export class HospitalComponent implements OnInit {
     })
 
     sessionStorage.setItem('hospital-diseases', JSON.stringify(diseases))
-    sessionStorage.setItem('hospital', JSON.stringify(this.hospital))
+    sessionStorage.setItem('hospital', JSON.stringify(hospital))
     await this.router.navigate(['hospitals/diseases'])
   }
 }

@@ -6,8 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./hospitals.component.scss']
 })
 export class HospitalsComponent implements OnInit {
-  hospitals: any = []
-  placeholder = "Search Hospital";
+  hospitals: any = [];
 
   constructor() {
   }

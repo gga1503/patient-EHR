@@ -1,3 +1,5 @@
+//search bar
+
 .search {
   &-container {
     height: 60px;
@@ -30,7 +32,7 @@
   }
 }
 
-.icon {
+.icon-search {
   padding: 10px 0px 10px 13px;
   min-width: 37px;
   background-color: #f3f2f2;
@@ -40,7 +42,7 @@
   color: #777676;
 }
 
-icon:focus {
+icon-search:focus {
   border: 2px solid rgb(63, 81, 181, 0.8);
 }
 
@@ -52,4 +54,21 @@ icon:focus {
 
 ::placeholder {
   color: #818181;
+}
+
+
+//card
+
+.icons {
+  float: right;
+}
+
+.card-body {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 15px;
+  background-color: rgba(96, 164, 245, 0.5);
+}
+
+.card {
+  border-radius: 15px;
 }

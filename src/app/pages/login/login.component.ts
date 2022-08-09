@@ -15,15 +15,14 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]);
   hideRequiredControl = new FormControl(false);
 
-  password = new FormControl('', Validators.compose([
+  password = new FormControl('', [
     Validators.minLength(5),
     Validators.required,
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-  ]));
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]);
 
   login = this.formBuilder.group({
-    "password": "patient123",
-    "email": "patient@gmail.com"
+    email: "patient@gmail.com",
+    password: "patient123"
   })
 
 
@@ -45,22 +44,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-
   async submit() {
-    // const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
-    // this.api.get(target).subscribe(
-    //   async (patient: any) => {
-    //     patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
-    //     localStorage.setItem('patient', JSON.stringify(patient))
-    //   },
-    //   (err: any) => console.error(err),
-    //   async () => {
-    //     const patient = JSON.parse(<string>localStorage.getItem('patient'))
-    //     console.log(`Patient ${patient.name} has been logged in sucessfully!`)
-    //     await this.router.navigate(['/home']);
-    //   }
-    // );
-
     const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
 
     const observable = {

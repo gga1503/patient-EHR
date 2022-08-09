@@ -9,7 +9,7 @@
       </div>
 
       <div class="logo">
-        <img class="logo-img" src="../../../../../assets/images/logo.png" width="50">
+        <img class="logo-img" src="assets/images/logo.png" width="50">
       </div>
     </div>
 
@@ -17,11 +17,12 @@
 
     <div class="searchDisease">
 
-      <h2>Disease</h2>
-      <app-search-bar [placeholder]="placeholder"></app-search-bar>
+      <h2>Diseases</h2>
+      <!--      <app-search-bar [(ngModel)]="searchDisease" [placeholder]="placeholder"></app-search-bar>-->
     </div>
 
-    <card-disease *ngFor="let disease of diseases" [disease]="disease"></card-disease>
+    <!--    <card-disease *ngFor="let disease of diseases | filter:searchDisease;" [disease]="disease"></card-disease>-->
+    <section-diseases [diseases]="diseases" [placeholder]="placeholder"></section-diseases>
   </div>
 
   <app-bottom-navbar></app-bottom-navbar>
