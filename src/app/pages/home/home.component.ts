@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
           this.patient.iv
         )
 
+        console.log(disease_name)
         this.group_decrypted(
           disease_name,
           group.hospital,

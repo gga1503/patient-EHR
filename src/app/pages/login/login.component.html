@@ -10,16 +10,22 @@
       <h2>Email</h2>
       <mat-form-field appearance="outline" class="mb-3">
         <mat-label>Enter your email</mat-label>
-        <input formControlName="email" matInput placeholder="user@example.com" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <input formControlName="email" name="email" matInput placeholder="user@example.com" required>
+        <mat-error *ngIf="!login.get('email')?.errors?.['required'] && login.get('email')?.errors?.['pattern']">
+          Please enter your valid email address!
+        </mat-error>
+        <mat-error *ngIf="login.get('email')?.invalid && (login.get('email')?.dirty || login.get('email')?.touched) && login.get('email')?.errors?.['required']">
+          Email is required
+        </mat-error>
       </mat-form-field>
 
       <h2>Password </h2>
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
         <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput required>
-        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
-
+        <mat-error *ngIf="login.get('password')?.invalid && (login.get('password')?.dirty || login.get('password')?.touched) && login.get('password')?.errors?.['required']">
+          Password is required
+        </mat-error>
         <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
                 matSuffix>
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -27,7 +33,7 @@
       </mat-form-field>
 
       <button class="mt-4 mb-3" color="primary" mat-raised-button style="width: 100%;border-radius: 0.7rem"
-              type="submit">
+              type="submit" [disabled]="!login.valid">
         Log In
       </button>
       <div class="bottom">

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {ApiService} from "../../shared/services/api/api.service";
 import {Router} from "@angular/router";
@@ -11,6 +13,13 @@ import {Router} from "@angular/router";
 export class SignUpComponent implements OnInit {
   hide = true;
   hideRequiredControl = new FormControl(false);
+
+  register = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
+    password: new FormControl('', [Validators.required,Validators.pattern("[a-z0-9._%+-].{4,}")]),
+    phone: new FormControl('', [Validators.pattern("[0-9 ].{9,}"), Validators.required]),
+  });
 
   signUp = this.formBuilder.group({
     name: '',
@@ -28,6 +37,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   submit() {
     const observable = {
