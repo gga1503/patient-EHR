@@ -6,29 +6,43 @@
       <h3>Start your health care here!</h3>
     </div>
 
-    <div class="test">
+    <form (ngSubmit)="submit()" [formGroup]="register" class="test">
       <h2>Full Name</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your full name</mat-label>
-        <input matInput placeholder="Noble Joseph Jr" required>
-        <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
-        <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+        <input formControlName="name" name="name" matInput placeholder="your name" required>
+        <mat-error
+          *ngIf="register.get('name')?.invalid && (register.get('name')?.dirty || register.get('name')?.touched) && register.get('name')?.errors?.['required']">
+          Name is required!
+        </mat-error>
       </mat-form-field>
 
       <h2>Email</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="user@example.com" required>
-        <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
-        <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+        <input formControlName="email" name="email" matInput placeholder="user@example.com" required>
+        <mat-error *ngIf="!register.get('email')?.errors?.['required'] && register.get('email')?.errors?.['pattern']">
+          Please enter your valid email address!
+        </mat-error>
+        <mat-error
+          *ngIf="register.get('email')?.invalid && (register.get('email')?.dirty || register.get('email')?.touched) && register.get('email')?.errors?.['required']">
+          Email is required!
+        </mat-error>
       </mat-form-field>
 
       <h2>Password</h2>
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
-        <input [type]="hide ? 'password' : 'text'" matInput required>
+        <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput required>
+        <mat-error *ngIf="!register.get('password')?.errors?.['required'] && register.get('password')?.errors?.['pattern']">
+          Please enter your password more than 5 letter!
+        </mat-error>
+        <mat-error
+          *ngIf="register.get('password')?.invalid && (register.get('password')?.dirty || register.get('password')?.touched) && register.get('password')?.errors?.['required']">
+          Password is required!
+        </mat-error>
         <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
-                matSuffix>
+          matSuffix>
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
@@ -36,19 +50,27 @@
       <h2>Phone Number</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your phone number</mat-label>
-        <input matInput placeholder="08***" required>
-        <!--        <input [formControl]="email" matInput placeholder="user@example.com" required>-->
-        <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+        <input formControlName="phone" name="phone" matInput placeholder="08***" required>
+        <mat-error *ngIf="!register.get('phone')?.errors?.['required'] && register.get('phone')?.errors?.['pattern']">
+          Please enter your valid phone number!
+        </mat-error>
+        <mat-error
+          *ngIf="register.get('phone')?.invalid && (register.get('phone')?.dirty || register.get('phone')?.touched) && register.get('phone')?.errors?.['required']">
+          Phone number is required!
+        </mat-error>
       </mat-form-field>
 
       <button class="mt-4 mb-3" color="primary" mat-raised-button style="width: 100%;border-radius: 0.7rem"
-              type="submit">
+        type="submit">
         Sign Up
       </button>
       <div class="bottom">
-        <h3 class="mt-5">Already have an account? <a routerLink="/login">Log In</a></h3>
+        <h3 class="mt-5">Already have an account? <a routerLink="/register">Log In</a></h3>
       </div>
-    </div>
+    </form>
+
+  </div>
+</div>
 
     <!--    <div class="searchDisease">-->
     <!--      <h2>Disease</h2>-->
@@ -56,5 +78,3 @@
     <!--    </div>-->
     <!--    -->
     <!--    <app-disease></app-disease>-->
-  </div>
-</div>

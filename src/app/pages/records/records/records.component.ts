@@ -52,6 +52,7 @@ export class RecordsComponent implements OnInit {
   }
 
   getHospital(record: any) {
+    console.log(record)
     this.disease.ciphers.forEach((cipher: any) => {
       if (cipher._id == record.disease_id) {
         record.hospital = {
@@ -61,7 +62,7 @@ export class RecordsComponent implements OnInit {
       }
     })
   }
-
+  
   async show(i: any) {
     const record = this.records[i]
     record.decipher = this.Crypto.AES.decrypt(record.diagnose, record.hospital.secretKey, this.patient.salt)
