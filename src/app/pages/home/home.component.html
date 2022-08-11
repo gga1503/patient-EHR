@@ -1,20 +1,28 @@
 <div class="box">
   <div class="rectangle"></div>
   <div class="content">
-    <div class="title">
-      <h1 class="mat-display-1">Welcome!</h1>
-      <h2 class="patient-name">{{patient.name}}</h2>
-      {{diseases}}
+    <div class="header-section">
+      <div class="title">
+        <h1 class="mat-display-1">Welcome!</h1>
+        <h2 class="patient-name">{{patient.name}}</h2>
+        {{diseases}}
+      </div>
+
+      <div class="logo">
+        <img class="logo-img" src="assets/images/logo.png" width="50">
+      </div>
     </div>
 
     <app-card-show-qr [card]="infoCard" [qrData]="qr"></app-card-show-qr>
 
     <div class="searchDisease">
-      <h2>Disease</h2>
-      <app-search-bar [placeholder]="placeholder"></app-search-bar>
+
+      <h2>Diseases</h2>
+      <!--      <app-search-bar [(ngModel)]="searchDisease" [placeholder]="placeholder"></app-search-bar>-->
     </div>
 
-    <card-disease *ngFor="let disease of diseases" [disease]="disease"></card-disease>
+    <!--    <card-disease *ngFor="let disease of diseases | filter:searchDisease;" [disease]="disease"></card-disease>-->
+    <section-diseases [diseases]="diseases" [placeholder]="placeholder"></section-diseases>
   </div>
 
   <app-bottom-navbar></app-bottom-navbar>

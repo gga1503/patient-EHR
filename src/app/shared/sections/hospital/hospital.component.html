@@ -1,0 +1,22 @@
+<div class="search-container">
+  <div class="search-form">
+    <span class="material-symbols-outlined icon-search">search</span>
+    <input
+      [(ngModel)]="searchHospital"
+      class="search-input"
+      name="searchBar"
+      placeholder="Search Hospital"
+      type="text"
+    />
+  </div>
+</div>
+
+<div class="cards-list">
+  <div (click)=show(hospital) *ngFor="let hospital of hospitals | filter:searchHospital;" class="card" role="button">
+    <div class="card_image"><img src="../../../../assets/images/pharmacyb.png"/></div>
+
+    <div class="card_title">
+      <p>{{hospital.name.split(' ').slice(0, -1).join(' ')}}</p>
+    </div>
+  </div>
+</div>

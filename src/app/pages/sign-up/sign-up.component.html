@@ -6,6 +6,7 @@
       <h3>Start your health care here!</h3>
     </div>
 
+
     <form (ngSubmit)="submit()" [formGroup]="register" class="test">
       <h2>Full Name</h2>
       <mat-form-field appearance="outline" class="mb-1">
@@ -20,6 +21,7 @@
       <h2>Email</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your email</mat-label>
+
         <input formControlName="email" name="email" matInput placeholder="user@example.com" required>
         <mat-error *ngIf="!register.get('email')?.errors?.['required'] && register.get('email')?.errors?.['pattern']">
           Please enter your valid email address!
@@ -28,6 +30,7 @@
           *ngIf="register.get('email')?.invalid && (register.get('email')?.dirty || register.get('email')?.touched) && register.get('email')?.errors?.['required']">
           Email is required!
         </mat-error>
+
       </mat-form-field>
 
       <h2>Password</h2>
@@ -68,13 +71,5 @@
         <h3 class="mt-5">Already have an account? <a routerLink="/register">Log In</a></h3>
       </div>
     </form>
-
   </div>
 </div>
-
-    <!--    <div class="searchDisease">-->
-    <!--      <h2>Disease</h2>-->
-    <!--      <app-search-bar></app-search-bar>-->
-    <!--    </div>-->
-    <!--    -->
-    <!--    <app-disease></app-disease>-->

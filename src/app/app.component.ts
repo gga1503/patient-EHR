@@ -30,4 +30,5 @@ export class AppComponent implements OnInit, OnDestroy {
       await this.router.navigate(['/login'])
     }
   }
+
 }

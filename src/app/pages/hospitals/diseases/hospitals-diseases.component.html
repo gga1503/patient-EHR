@@ -1,0 +1,27 @@
+<div class="box">
+  <div class="rectangle"></div>
+
+  <header>
+    <div class="header-component row">
+      <span (click)=previousPage() class="material-icons col-3">arrow_back_ios</span>
+      <!--      <h2 class="col-6">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>-->
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="content-1 mb-4">
+      <div class="hospital-icon">
+        <img src="assets/images/pharmacyb.png"/>
+      </div>
+      <h2 class="hospital-name">{{hospital.name.split(' ').slice(0, -1).join(' ')}}</h2>
+    </div>
+
+    <app-card-show-qr [card]="info" [qrData]="qr"></app-card-show-qr>
+
+    <div class="listDisease">
+      <h2>List Disease</h2>
+    </div>
+
+    <section-diseases [diseases]="diseases" [placeholder]="placeholder"></section-diseases>
+  </div>
+</div>

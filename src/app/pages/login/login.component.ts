@@ -4,7 +4,6 @@ import {ApiService} from "../../shared/services/api/api.service";
 import {FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,10 +19,28 @@ export class LoginComponent implements OnInit {
   hide = true;
   hideRequiredControl = new FormControl(false);
 
+  password = new FormControl('', [
+    Validators.minLength(5),
+    Validators.required,
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]);
+
+  login = this.formBuilder.group({
+    email: "patient@gmail.com",
+    password: "patient123"
+  })
+
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
     private router: Router) {
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required') && this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   ngOnInit(): void {

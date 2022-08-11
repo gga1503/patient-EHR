@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private Crypto: CryptoService,
     private router: Router,
-    private api: ApiService) {
+    private api: ApiService
+  ) {
   }
 
   async ngOnInit(): Promise<void> {
