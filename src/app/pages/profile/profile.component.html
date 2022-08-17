@@ -12,7 +12,7 @@
 
     <div class="text-center">
       <h1 class="mb-0">{{patient.name}}</h1>
-      <span class="text-email text-muted d-block mb-3">graciela@gmail.com</span>
+      <span class="text-email text-muted d-block mb-3">{{patient.email}}</span>
       <div class="password-section">
         <span class="text-muted material-symbols-outlined lock-icon">lock</span>
         <span class="text-muted">• • • • • • • • • • •</span>
@@ -40,12 +40,12 @@
 
       <div class="user-profile-data">
         <h3 class="key text-muted">Address</h3>
-        <h3 class="value">Jl. Kuningan timur 2 no 53</h3>
+        <h3 class="value">{{patient.address}}</h3>
       </div>
 
       <div class="user-profile-data">
         <h3 class="key text-muted">Phone Number</h3>
-        <h3 class="value">081264485353</h3>
+        <h3 class="value">{{patient.phone}}</h3>
       </div>
 
       <div class="text-center">

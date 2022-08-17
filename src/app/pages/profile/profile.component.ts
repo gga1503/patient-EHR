@@ -12,7 +12,8 @@ import {ConfirmationService} from "../../shared/services/pop-up/confirmation.ser
 export class ProfileComponent implements OnInit {
   patient = JSON.parse(<string>localStorage.getItem('patient'))
   message = 'You have successfully been logged out'
-
+  hide = true;
+  
   constructor(
     private router: Router,
     private notif: MatSnackBar,

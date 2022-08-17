@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,6 +14,15 @@ export class DiseasesComponent implements OnInit {
   constructor(
     private router: Router
   ) {
+  }
+
+  @HostListener('scroll', ['$event'])
+  onScroll(e: any) {
+    console.log('Hello', e);
+  }
+
+  divScroll(e: any) {
+    console.log('div Hello', e);
   }
 
   ngOnInit(): void {

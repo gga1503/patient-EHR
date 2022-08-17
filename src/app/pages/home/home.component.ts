@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {CryptoService} from '../../shared/services/crypto/crypto.service';
 import {Router} from "@angular/router";
 import {ApiService} from "../../shared/services/api/api.service";
@@ -24,12 +24,14 @@ export class HomeComponent implements OnInit {
     bc: this.patient.bc_address
   }
 
+
   constructor(
     private Crypto: CryptoService,
     private router: Router,
     private api: ApiService
   ) {
   }
+
 
   async ngOnInit(): Promise<void> {
     this.patient.ecdh = {

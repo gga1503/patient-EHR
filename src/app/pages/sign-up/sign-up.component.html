@@ -7,13 +7,13 @@
     </div>
 
 
-    <form (ngSubmit)="submit()" [formGroup]="register" class="test">
+    <form (ngSubmit)="submit()" [formGroup]="patient" class="test">
       <h2>Full Name</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your full name</mat-label>
-        <input formControlName="name" name="name" matInput placeholder="your name" required>
+        <input formControlName="name" matInput name="name" placeholder="your name" required>
         <mat-error
-          *ngIf="register.get('name')?.invalid && (register.get('name')?.dirty || register.get('name')?.touched) && register.get('name')?.errors?.['required']">
+          *ngIf="patient.get('name')?.invalid && (patient.get('name')?.dirty || patient.get('name')?.touched) && patient.get('name')?.errors?.['required']">
           Name is required!
         </mat-error>
       </mat-form-field>
@@ -22,12 +22,12 @@
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your email</mat-label>
 
-        <input formControlName="email" name="email" matInput placeholder="user@example.com" required>
-        <mat-error *ngIf="!register.get('email')?.errors?.['required'] && register.get('email')?.errors?.['pattern']">
+        <input formControlName="email" matInput name="email" placeholder="user@example.com" required>
+        <mat-error *ngIf="!patient.get('email')?.errors?.['required'] && patient.get('email')?.errors?.['pattern']">
           Please enter your valid email address!
         </mat-error>
         <mat-error
-          *ngIf="register.get('email')?.invalid && (register.get('email')?.dirty || register.get('email')?.touched) && register.get('email')?.errors?.['required']">
+          *ngIf="patient.get('email')?.invalid && (patient.get('email')?.dirty || patient.get('email')?.touched) && patient.get('email')?.errors?.['required']">
           Email is required!
         </mat-error>
 
@@ -37,38 +37,83 @@
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
         <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput required>
-        <mat-error *ngIf="!register.get('password')?.errors?.['required'] && register.get('password')?.errors?.['pattern']">
+        <mat-error
+          *ngIf="!patient.get('password')?.errors?.['required'] && patient.get('password')?.errors?.['pattern']">
           Please enter your password more than 5 letter!
         </mat-error>
         <mat-error
-          *ngIf="register.get('password')?.invalid && (register.get('password')?.dirty || register.get('password')?.touched) && register.get('password')?.errors?.['required']">
+          *ngIf="patient.get('password')?.invalid && (patient.get('password')?.dirty || patient.get('password')?.touched) && patient.get('password')?.errors?.['required']">
           Password is required!
         </mat-error>
         <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
-          matSuffix>
+                matSuffix>
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
 
+      <h2>Date of Birth</h2>
+      <mat-form-field appearance="outline" class="mb-1">
+        <mat-label>Choose your date of birth</mat-label>
+
+        <input [matDatepicker]="picker" formControlName="dob" matInput name="dob" placeholder="dd/mm/yyyy" required>
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!--        <mat-error *ngIf="!patient.get('email')?.errors?.['required'] && patient.get('email')?.errors?.['pattern']">-->
+        <!--          Please enter your valid email address!-->
+        <!--        </mat-error>-->
+        <!--        <mat-error-->
+        <!--          *ngIf="patient.get('email')?.invalid && (patient.get('email')?.dirty || patient.get('email')?.touched) && patient.get('email')?.errors?.['required']">-->
+        <!--          Email is required!-->
+        <!--        </mat-error>-->
+
+      </mat-form-field>
+
+      <h2>Gender</h2>
+      <mat-form-field appearance="outline" class="mb-1">
+        <mat-label>Select your gender</mat-label>
+        <mat-select [(ngModel)]="selectedOption" name="gender">
+
+          <!--          <mat-option value="option1">Female</mat-option>-->
+          <!--          <mat-option value="option2">Male</mat-option>-->
+          <mat-option *ngFor="let gender of options" [value]="gender">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <h2>Phone Number</h2>
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your phone number</mat-label>
-        <input formControlName="phone" name="phone" matInput placeholder="08***" required>
-        <mat-error *ngIf="!register.get('phone')?.errors?.['required'] && register.get('phone')?.errors?.['pattern']">
+        <input formControlName="phone" matInput name="phone" placeholder="08***" required>
+        <mat-error *ngIf="!patient.get('phone')?.errors?.['required'] && patient.get('phone')?.errors?.['pattern']">
           Please enter your valid phone number!
         </mat-error>
         <mat-error
-          *ngIf="register.get('phone')?.invalid && (register.get('phone')?.dirty || register.get('phone')?.touched) && register.get('phone')?.errors?.['required']">
+          *ngIf="patient.get('phone')?.invalid && (patient.get('phone')?.dirty || patient.get('phone')?.touched) && patient.get('phone')?.errors?.['required']">
           Phone number is required!
         </mat-error>
       </mat-form-field>
 
-      <button class="mt-4 mb-3" color="primary" mat-raised-button style="width: 100%;border-radius: 0.7rem"
-        type="submit">
+      <h2>Address</h2>
+      <mat-form-field appearance="outline" class="mb-1">
+        <mat-label>Enter your Address</mat-label>
+        <input formControlName="address" matInput name="address" placeholder="Jalan Mangga Dua 1 No. 45" required>
+        <!--        <mat-error *ngIf="!patient.get('phone')?.errors?.['required'] && patient.get('phone')?.errors?.['pattern']">-->
+        <!--          Please enter your valid phone number!-->
+        <!--        </mat-error>-->
+        <!--        <mat-error-->
+        <!--          *ngIf="patient.get('phone')?.invalid && (patient.get('phone')?.dirty || patient.get('phone')?.touched) && patient.get('phone')?.errors?.['required']">-->
+        <!--          Phone number is required!-->
+        <!--        </mat-error>-->
+      </mat-form-field>
+
+      <button [disabled]="!patient.valid" class="mt-4 mb-3" color="primary" mat-raised-button
+              style="width: 100%;border-radius: 0.7rem" type="submit">
         Sign Up
       </button>
       <div class="bottom">
-        <h3 class="mt-5">Already have an account? <a routerLink="/register">Log In</a></h3>
+        <h3 class="mt-5">Already have an account? <a routerLink="/login">Log In</a></h3>
       </div>
     </form>
   </div>

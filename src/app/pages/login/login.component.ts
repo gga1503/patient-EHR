@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   login = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
-    password: new FormControl('', [Validators.required,Validators.minLength(5)])
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
   });
 
   hide = true;
@@ -24,10 +24,6 @@ export class LoginComponent implements OnInit {
     Validators.required,
     Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]);
 
-  login = this.formBuilder.group({
-    email: "patient@gmail.com",
-    password: "patient123"
-  })
 
   constructor(
     private api: ApiService,
@@ -35,13 +31,6 @@ export class LoginComponent implements OnInit {
     private router: Router) {
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required') && this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
 
   ngOnInit(): void {
 
@@ -51,7 +40,7 @@ export class LoginComponent implements OnInit {
     const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
     this.api.get(target).subscribe(
       async (patient: any) => {
-        patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
+        patient.ecdh_private_key = localStorage.getItem('privateKey')
         localStorage.setItem('patient', JSON.stringify(patient))
       },
       (err: any) => console.error(err),

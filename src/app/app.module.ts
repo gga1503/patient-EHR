@@ -18,6 +18,9 @@ import {ForgotPasswordComponent} from './pages/reset-password/forgot-password/fo
 import {CheckYourMailComponent} from './pages/reset-password/check-your-mail/check-your-mail.component';
 import {CreateNewPasswordComponent} from './pages/reset-password/create-new-password/create-new-password.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -40,9 +43,12 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     MatInputModule,
     MatButtonModule,
     MatRadioModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,10 +8,19 @@ import {Router} from "@angular/router";
 })
 export class BottomNavbarComponent implements OnInit {
   patient: any = null
+  navbarfixed: boolean = false;
 
   constructor(
     private router: Router
   ) {
+  }
+
+  @HostListener('window:scroll', ['$event']) onscroll() {
+    if (window.scrollY > 100) {
+      this.navbarfixed = true;
+    } else {
+      this.navbarfixed = false;
+    }
   }
 
   async ngOnInit(): Promise<void> {

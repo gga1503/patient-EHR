@@ -1,4 +1,4 @@
-<footer>
+<footer (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
   <mat-toolbar class="toolbarNav">
     <button class='target' mat-flat-button
             routerLink="/home" routerLinkActive="active">

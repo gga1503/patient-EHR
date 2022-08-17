@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div *ngFor="let disease of diseases | filter:searchDisease;"
+<div (scroll)="divScroll($event)" *ngFor="let disease of diseases | filter:searchDisease;"
      class="card card-disease-image mt-3 items-center justify-start position-relative border-0">
   <div class="col-12 d-flex">
     <div (click)="goToRecords(disease)" class="card-body" role="button">
