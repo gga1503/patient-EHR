@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
     email: new FormControl('valeriee@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
     password: new FormControl('valerie123', [Validators.required, Validators.pattern("[a-z0-9._%+-].{4,}")]),
     dob: new FormControl(),
-    bc_address: new FormControl('0x25AD609EACa3272068ecb06FC99F13f612fd54B1'),
+    bc_address: new FormControl('0xafeEb9069Aafc36473234829d00061502bB21ED9'),
     gender: new FormControl(this.options[0].value),
     phone: new FormControl('08787655124', [Validators.pattern("[0-9 ].{9,}"), Validators.required]),
     address: new FormControl(),

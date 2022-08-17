@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.api.get(target).subscribe(
       async (patient: any) => {
         patient.ecdh_private_key = localStorage.getItem('privateKey')
+        // patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
         localStorage.setItem('patient', JSON.stringify(patient))
       },
       (err: any) => console.error(err),

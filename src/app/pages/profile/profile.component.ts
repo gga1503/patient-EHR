@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   patient = JSON.parse(<string>localStorage.getItem('patient'))
   message = 'You have successfully been logged out'
   hide = true;
-  
+
   constructor(
     private router: Router,
     private notif: MatSnackBar,
@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
   }
 
   async logout() {
-    localStorage.clear()
+    localStorage.removeItem('patient')
     sessionStorage.clear()
     await this.router.navigate(['/login'])
     await this.messageNotif()
