@@ -58,13 +58,10 @@
         <input [matDatepicker]="picker" formControlName="dob" matInput name="dob" placeholder="dd/mm/yyyy" required>
         <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <!--        <mat-error *ngIf="!patient.get('email')?.errors?.['required'] && patient.get('email')?.errors?.['pattern']">-->
-        <!--          Please enter your valid email address!-->
-        <!--        </mat-error>-->
-        <!--        <mat-error-->
-        <!--          *ngIf="patient.get('email')?.invalid && (patient.get('email')?.dirty || patient.get('email')?.touched) && patient.get('email')?.errors?.['required']">-->
-        <!--          Email is required!-->
-        <!--        </mat-error>-->
+        <mat-error
+          *ngIf="patient.get('dob')?.invalid && (patient.get('dob')?.dirty || patient.get('dob')?.touched) && patient.get('dob')?.errors?.['required']">
+          DoB is required!
+        </mat-error>
 
       </mat-form-field>
 
@@ -72,13 +69,15 @@
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Select your gender</mat-label>
         <mat-select [(ngModel)]="selectedOption" name="gender">
-
-          <!--          <mat-option value="option1">Female</mat-option>-->
-          <!--          <mat-option value="option2">Male</mat-option>-->
           <mat-option *ngFor="let gender of options" [value]="gender">
             {{gender.viewValue}}
           </mat-option>
         </mat-select>
+
+        <mat-error
+          *ngIf="patient.get('gender')?.invalid && (patient.get('gender')?.dirty || patient.get('gender')?.touched) && patient.get('gender')?.errors?.['required']">
+          Gender is required!
+        </mat-error>
       </mat-form-field>
 
 
@@ -99,13 +98,13 @@
       <mat-form-field appearance="outline" class="mb-1">
         <mat-label>Enter your Address</mat-label>
         <input formControlName="address" matInput name="address" placeholder="Jalan Mangga Dua 1 No. 45" required>
-        <!--        <mat-error *ngIf="!patient.get('phone')?.errors?.['required'] && patient.get('phone')?.errors?.['pattern']">-->
-        <!--          Please enter your valid phone number!-->
-        <!--        </mat-error>-->
-        <!--        <mat-error-->
-        <!--          *ngIf="patient.get('phone')?.invalid && (patient.get('phone')?.dirty || patient.get('phone')?.touched) && patient.get('phone')?.errors?.['required']">-->
-        <!--          Phone number is required!-->
-        <!--        </mat-error>-->
+        <mat-error *ngIf="!patient.get('address')?.errors?.['required'] && patient.get('address')?.errors?.['pattern']">
+          Please enter your valid address!
+        </mat-error>
+        <mat-error
+          *ngIf="patient.get('address')?.invalid && (patient.get('address')?.dirty || patient.get('address')?.touched) && patient.get('address')?.errors?.['required']">
+          Address is required!
+        </mat-error>
       </mat-form-field>
 
       <button [disabled]="!patient.valid" class="mt-4 mb-3" color="primary" mat-raised-button

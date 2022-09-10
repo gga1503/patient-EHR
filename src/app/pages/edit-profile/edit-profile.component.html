@@ -27,30 +27,32 @@
       <div class="user-profile pt-3" style="font-size: 10px">
         <mat-form-field appearance="outline" class="mb-1">
           <mat-label>Date of Birth</mat-label>
-          <input formControlName="dob" matInput placeholder="{{patient.dob}}" required>
+          <input [matDatepicker]="picker" formControlName="dob" matInput placeholder="{{patient.dob | date}}" required>
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <!--        <input matInput placeholder="Mar 15,2000" [formControl]="fontSizeControl" required>-->
           <!--        <input matInput placeholder="user@example.com" required>-->
           <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
         </mat-form-field>
 
-        <div class="mb-2">
+        <div class="mb-4">
           <h2>Gender</h2>
           <!--        <mat-radio-group [formControl]="floatLabelControl">-->
-          <mat-radio-button [value]="1">Female</mat-radio-button>
+          <mat-radio-button [checked]="true" [value]="1">Female</mat-radio-button>
           <mat-radio-button [value]="2">Male</mat-radio-button>
         </div>
 
 
         <mat-form-field appearance="outline" class="mb-1">
           <mat-label>Address</mat-label>
-          <input formControlName="address" matInput placeholder="{{patient.address}}" required>
+          <input formControlName="address" matInput required value="{{patient.address}}">
           <!--        <input  matInput placeholder="user@example.com" required>-->
           <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="mb-1">
           <mat-label>Phone number</mat-label>
-          <input formControlName="phone" matInput placeholder="{{patient.phone}}" required>
+          <input formControlName="phone" matInput required value="{{patient.phone}}">
           <!--        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
         </mat-form-field>
 

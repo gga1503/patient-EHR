@@ -25,13 +25,13 @@ export class SignUpComponent implements OnInit {
   selectedOption = this.options
 
   patient = new FormGroup({
-    name: new FormControl('Valerie', [Validators.required]),
-    email: new FormControl('valeriee@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
-    password: new FormControl('valerie123', [Validators.required, Validators.pattern("[a-z0-9._%+-].{4,}")]),
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-].{4,}")]),
     dob: new FormControl(),
-    bc_address: new FormControl('0xafeEb9069Aafc36473234829d00061502bB21ED9'),
-    gender: new FormControl(this.options[0].value),
-    phone: new FormControl('08787655124', [Validators.pattern("[0-9 ].{9,}"), Validators.required]),
+    bc_address: new FormControl('0x25AD609EACa3272068ecb06FC99F13f612fd54B1'),
+    gender: new FormControl(this.options[1].value),
+    phone: new FormControl('', [Validators.pattern("[0-9 ].{9,}"), Validators.required]),
     address: new FormControl(),
     ecdh: new FormGroup({
       public_key: new FormControl('')
@@ -79,7 +79,7 @@ export class SignUpComponent implements OnInit {
     const observable = {
       next: (response: any) => {
         console.log(response)
-        this.route.navigate(['login'])
+        this.route.navigate(['/login'])
         this.messageNotif()
       },
       error: (err: Error) => console.error(err),

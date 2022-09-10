@@ -40,8 +40,10 @@ export class LoginComponent implements OnInit {
     const target = `patients/login?email=${this.login.value.email}&password=${this.login.value.password}`
     this.api.get(target).subscribe(
       async (patient: any) => {
-        patient.ecdh_private_key = localStorage.getItem('privateKey')
-        // patient.ecdh_private_key = 'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgw+rDCZnzRCNqqhLatYv2LVlAMQHrSmpbkpadE5jfbrahRANCAATyiIVnvpjAcF1diQsyCPK23opmj74dM57iRIyJRgu9N0+PKS+q7qF/+xtxrnBv+x8hKT2vOVwsSVVyEbLRDbFH'
+        // patient.ecdh_private_key = localStorage.getItem('privateKey')
+        patient.ecdh_private_key =
+          'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgHAhGKpowO1UbAwYOnYlCsxOwMirk1C7voBTxj9nSRHmhRANCAARP+UfPrkG8FjJCpF5bjzI3iYOtZEfOMhkDLy1SYOarTW591V1iId4NTaqvYIwAOd/hyePPCzo6RMPYBnI6hgHD'
+
         localStorage.setItem('patient', JSON.stringify(patient))
       },
       (err: any) => console.error(err),

@@ -10,14 +10,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
+  checked = 'true'
 
   patient = JSON.parse(<string>localStorage.getItem('patient'))
 
   edit = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"), Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-].{4,}")]),
-    phone: new FormControl('', [Validators.pattern("[0-9 ].{9,}"), Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-].{4,}")])
   });
 
   constructor(
